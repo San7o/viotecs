@@ -6,6 +6,7 @@ Entities are objects in the game, It's just an ID:
 ```c++
 entity entity = world::new_entity();
 ```
+
 ### Components
 Components are pieces of data that are attached to an entity:
 ```c++
@@ -20,13 +21,14 @@ struct physics_component : component {
 // Somehwere
 world::add_component<physics_component>(entity, physics_component);
 ```
+
 ### Systems
 Systems are functions that operate on entities with specific components. They
-are called at each game tick by the `World`:
+are called at each game tick by the `world`:
 ```c++
 struct fps_system : system<none> {
     void run(std::vector<entity_t> _) const override {
-        text::render_text("FPS: " + std::to_string(Time::GetFPS()), 25.0f, 25.0f,
+        text::render_text("FPS: " + std::to_string(time::get_fps()), 25.0f, 25.0f,
                          0.35f, glm::vec3(1.0f, 0.9f, 0.0f));
     }
 };
@@ -38,7 +40,7 @@ REGISTER_SYSTEMS(fps_system);
 ### Resources
 
 Resources are like global data, accessible by any system:
-```
+```c++
 struct my_resource : resource {
     int my_data;
     bool is_ok;

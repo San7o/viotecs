@@ -24,49 +24,56 @@
  *
  */
 
-#pragma once
+#include "valfuzz/valfuzz.hpp"
+#include "oak/oak.hpp"
+#include "viotecs/world.hpp"
 
-#include "entity.hpp"
+using namespace viotecs;
 
-namespace brenta
+BEFORE()
 {
+    oak::set_level(oak::level::disabled);
+}
 
-namespace ecs
+TEST(ecs_init, "Get ECS without inizialization")
 {
+    auto entities = world::get_entities();
+    ASSERT(entities == nullptr);
 
-/**
- * @brief Component class
- *
- * This class is used to create components. Components are used to store
- * data that is associated with an entity. For example, a Position
- * component could store the position of the entity.
- *
- * Example creating a component:
- *
- * ```
- * struct transform_component : component {
- *   glm::vec3 position;
- *   glm::vec3 rotation;
- *   float scale;
- *
- *   transform_component() : ...
- *   transform_component(glm::vec3 position, ...
- * };
- * ```
- *
- * You need to provide a default constructor,
- * any other constructor is optional.
- */
-struct component
+    auto resources = world::get_resources();
+    ASSERT(resources == nullptr);
+
+    auto components = world::get_components();
+    ASSERT(components == nullptr);
+}
+
+TEST(ecs_init_destroy, "ECS world inizialization and destruction")
 {
-    entity_t entity;
+    world::init();
 
-    bool operator==(const component &other) const
     {
-        return (entity == other.entity);
+        auto entities = world::get_entities();
+        ASSERT(entities != nullptr);
+
+        auto resources = world::get_resources();
+        ASSERT(resources != nullptr);
+
+        auto components = world::get_components();
+        ASSERT(components != nullptr);
     }
-};
 
-} // namespace ecs
+    world::destroy();
 
-} // namespace brenta
+    {
+        auto entities = world::get_entities();
+        ASSERT(entities == nullptr);
+
+        auto resources = world::get_resources();
+        ASSERT(resources == nullptr);
+
+        auto components = world::get_components();
+        ASSERT(components == nullptr);
+    }
+
+    world::destroy();
+}

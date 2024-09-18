@@ -26,9 +26,9 @@
 
 #pragma once
 
-#include "ecs.hpp"
-#include "ecs_types.hpp"
-#include "engine_logger.hpp"
+#include "viotecs/ecs.hpp"
+#include "viotecs/ecs_types.hpp"
+#include "oak/oak.hpp"
 
 #include <algorithm>
 #include <memory>
@@ -38,10 +38,7 @@
 #include <unordered_map>
 #include <vector>
 
-namespace brenta
-{
-
-namespace ecs
+namespace viotecs
 {
 
 using namespace types;
@@ -119,13 +116,13 @@ class world
     {
         if (!resources)
         {
-            ERROR("Cannot get resource: world not initialized");
+            OAK_ERROR("Cannot get resource: world not initialized");
             return nullptr;
         }
 
         if (!resources->count(std::type_index(typeid(R))))
         {
-            ERROR("Resource not found: {}", std::type_index(typeid(R)).name());
+            OAK_ERROR("Resource not found: {}", std::type_index(typeid(R)).name());
             return nullptr;
         }
 
@@ -155,7 +152,7 @@ class world
     {
         if (!components)
         {
-            ERROR("Cannot add component: world not initialized");
+            OAK_ERROR("Cannot add component: world not initialized");
             return;
         }
 
@@ -172,7 +169,7 @@ class world
             components->at(std::type_index(typeid(C))).push_back(component);
         }
 
-        INFO("Added component: {}", std::type_index(typeid(C)).name());
+        OAK_INFO("Added component: {}", std::type_index(typeid(C)).name());
     }
 
     /**
@@ -189,13 +186,13 @@ class world
     {
         if (!resources)
         {
-            ERROR("Cannot add resource: world not initialized");
+            OAK_ERROR("Cannot add resource: world not initialized");
             return;
         }
 
         resources->insert(
             {std::type_index(typeid(R)), std::make_shared<R>(resource)});
-        INFO("Added Resource: {}", std::type_index(typeid(R)).name());
+        OAK_INFO("Added Resource: {}", std::type_index(typeid(R)).name());
     }
 
     /**
@@ -229,13 +226,13 @@ class world
     {
         if (!resources)
         {
-            ERROR("Cannot remove resource: world not initialized");
+            OAK_ERROR("Cannot remove resource: world not initialized");
             return;
         }
 
         if (!resources->count(std::type_index(typeid(R))))
         {
-            ERROR("Resource not found: {}", std::type_index(typeid(R)).name());
+            OAK_ERROR("Resource not found: {}", std::type_index(typeid(R)).name());
             return;
         }
 
@@ -262,13 +259,13 @@ class world
     {
         if (!components)
         {
-            ERROR("Cannot get component: world not initialized");
+            OAK_ERROR("Cannot get component: world not initialized");
             return nullptr;
         }
 
         if (!components->count(std::type_index(typeid(C))))
         {
-            ERROR("Component not found: {}", std::type_index(typeid(C)).name());
+            OAK_ERROR("Component not found: {}", std::type_index(typeid(C)).name());
             return nullptr;
         }
 
@@ -291,7 +288,7 @@ class world
     static void run_systems();
 
   private:
-    static SetPtr<ecs::entity_t> entities;
+    static SetPtr<viotecs::entity_t> entities;
     static UMapPtr<std::type_index, resource> resources;
     static UMapVecPtr<std::type_index, component> components;
 
@@ -308,14 +305,14 @@ class world
                           std::tuple_size_v<std::remove_reference_t<Tuple>>>{});
     }
     template <typename... T>
-    static std::vector<ecs::entity_t> query_components_tuple(std::tuple<T...>)
+    static std::vector<viotecs::entity_t> query_components_tuple(std::tuple<T...>)
     {
         return query_components<T...>();
     }
     template <typename System> static void process(const System &system)
     {
         using dependencies = typename System::dependencies;
-        std::vector<ecs::entity_t> matches =
+        std::vector<viotecs::entity_t> matches =
             query_components_tuple(dependencies{});
         system.run(matches);
     }
@@ -325,7 +322,7 @@ class world
     {
         if (!world::components)
         {
-            ERROR("Cannot query: world not initialized");
+            OAK_ERROR("Cannot query: world not initialized");
             return {};
         }
 
@@ -381,6 +378,4 @@ class world
     }
 };
 
-} // namespace ecs
-
-} // namespace brenta
+} // namespace viotecs

@@ -26,47 +26,42 @@
 
 #pragma once
 
-#include <memory>
-#include <set>
-#include <unordered_map>
-#include <vector>
+#include "viotecs/entity.hpp"
 
-namespace brenta
-{
-
-namespace ecs
-{
-
-namespace types
+namespace viotecs
 {
 
 /**
- * @brief None type
+ * @brief Component class
  *
- * This type is used to represent a null value.
+ * This class is used to create components. Components are used to store
+ * data that is associated with an entity. For example, a Position
+ * component could store the position of the entity.
+ *
+ * Example creating a component:
+ *
+ * ```
+ * struct transform_component : component {
+ *   glm::vec3 position;
+ *   glm::vec3 rotation;
+ *   float scale;
+ *
+ *   transform_component() : ...
+ *   transform_component(glm::vec3 position, ...
+ * };
+ * ```
+ *
+ * You need to provide a default constructor,
+ * any other constructor is optional.
  */
-struct none
+struct component
 {
+    entity_t entity;
+
+    bool operator==(const component &other) const
+    {
+        return (entity == other.entity);
+    }
 };
 
-template <typename T> using SPtr = std::shared_ptr<T>;
-
-template <typename T> using SetPtr = std::unique_ptr<std::set<T>>;
-
-template <typename T, typename G> using UMap = std::unordered_map<T, SPtr<G>>;
-
-template <typename T, typename G>
-using UMapVec = std::unordered_map<T, std::vector<SPtr<G>>>;
-
-template <typename T, typename G> using UMapPtr = std::unique_ptr<UMap<T, G>>;
-
-template <typename T, typename G>
-using UMapVecPtr = std::unique_ptr<UMapVec<T, G>>;
-
-template <typename T> using VecSPtr = std::shared_ptr<std::vector<SPtr<T>>>;
-
-} // namespace types
-
-} // namespace ecs
-
-} // namespace brenta
+} // namespace viotecs

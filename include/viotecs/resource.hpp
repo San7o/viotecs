@@ -26,19 +26,32 @@
 
 #pragma once
 
-namespace brenta
-{
-
-namespace ecs
+namespace viotecs
 {
 
 /**
- * @brief Entity type
+ * @brief Resource type
  *
- * This type is used to identify game objects in the game world.
+ * This type is used to identify resources in the game world.
+ * Resources are pieces of global data that can be accessed by any System.
+ *
+ * Example creating a resource:
+ *
+ * ```
+ * struct wireframe_resource : resource {
+ *     bool enabled;
+ *     wireframe_resource(bool e) : enabled(e) {}
+ * };
+ * ```
+ *
+ * Example registering a resource:
+ * ```
+ * world::add_resource<wireframe_resource>(wireframe_resource(false));
+ * ```
+ *
  */
-typedef int entity_t;
+struct resource
+{
+};
 
-} // namespace ecs
-
-} // namespace brenta
+} // namespace viotecs

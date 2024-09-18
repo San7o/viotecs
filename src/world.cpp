@@ -24,14 +24,12 @@
  *
  */
 
-#include "world.hpp"
-
-#include "engine_logger.hpp"
-#include "engine_time.hpp"
+#include "viotecs/world.hpp"
+#include "oak/oak.hpp"
 
 #include <algorithm>
 
-using namespace brenta::ecs;
+using namespace viotecs;
 
 SetPtr<entity_t> world::entities;
 UMapPtr<std::type_index, resource> world::resources;
@@ -49,7 +47,7 @@ void world::init()
     world::resources = std::make_unique<UMap<std::type_index, resource>>();
     world::components = std::make_unique<UMapVec<std::type_index, component>>();
 
-    INFO("World initialized");
+    OAK_INFO("World initialized");
 }
 
 void world::destroy()
@@ -58,7 +56,7 @@ void world::destroy()
     world::components.reset();
     world::resources.reset();
 
-    INFO("World deleted");
+    OAK_INFO("World deleted");
 }
 
 void world::tick()
@@ -70,7 +68,7 @@ entity_t world::new_entity()
 {
     if (!world::entities)
     {
-        ERROR("Cannot create entity: world not initialized");
+        OAK_ERROR("Cannot create entity: world not initialized");
         return -1;
     }
 
@@ -83,7 +81,7 @@ entity_t world::new_entity()
     entity_t new_entity = *(world::entities->rbegin()) + 1;
     world::entities->insert(new_entity);
 
-    INFO("New entity created: {}", new_entity);
+    OAK_INFO("New entity created: {}", new_entity);
 
     return new_entity;
 }
@@ -92,7 +90,7 @@ std::set<entity_t> *world::get_entities()
 {
     if (!world::entities)
     {
-        ERROR("Cannot get entities: world not initialized");
+        OAK_ERROR("Cannot get entities: world not initialized");
         return nullptr;
     }
     return world::entities.get();
@@ -102,7 +100,7 @@ UMap<std::type_index, resource> *world::get_resources()
 {
     if (!world::resources)
     {
-        ERROR("Cannot get resources: world not initialized");
+        OAK_ERROR("Cannot get resources: world not initialized");
         return nullptr;
     }
     return world::resources.get();
@@ -112,7 +110,7 @@ UMapVec<std::type_index, component> *world::get_components()
 {
     if (!world::components)
     {
-        ERROR("Cannot get components: world not initialized");
+        OAK_ERROR("Cannot get components: world not initialized");
         return nullptr;
     }
     return world::components.get();
@@ -122,7 +120,7 @@ void world::remove_entity(entity_t entity)
 {
     if (!world::entities)
     {
-        ERROR("Cannot remove entity: world not initialized");
+        OAK_ERROR("Cannot remove entity: world not initialized");
         return;
     }
 
@@ -138,5 +136,5 @@ void world::remove_entity(entity_t entity)
             iter->second.end());
     }
 
-    INFO("Entity removed: {}", entity);
+    OAK_INFO("Entity removed: {}", entity);
 }
