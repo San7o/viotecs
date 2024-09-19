@@ -25,7 +25,7 @@
  */
 
 #include "valfuzz/valfuzz.hpp"
-#include "viotecs/ecs.hpp"
+#include "viotecs/viotecs.hpp"
 
 #include <typeinfo>
 #include <unordered_map>
