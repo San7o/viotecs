@@ -32,10 +32,15 @@
 
 using namespace viotecs;
 
-struct AComponent : component {
+struct AComponent : component
+{
     int payload;
-    AComponent() {}
-    AComponent(int payload) : payload(payload) {}
+    AComponent()
+    {
+    }
+    AComponent(int payload) : payload(payload)
+    {
+    }
 };
 
 TEST(entity_component, "Add a component to an entity")
@@ -55,7 +60,7 @@ TEST(entity_component, "Add a component to an entity")
     auto type_components = components->at(typeid(AComponent));
     ASSERT(type_components.size() == 1);
 
-    auto component = static_cast<AComponent*>(type_components[0].get());
+    auto component = static_cast<AComponent *>(type_components[0].get());
     ASSERT(component != nullptr);
     ASSERT(component->payload == 69);
     ASSERT(component->entity == entity);

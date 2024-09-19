@@ -65,4 +65,3 @@ template <typename T> using VecSPtr = std::shared_ptr<std::vector<SPtr<T>>>;
 } // namespace types
 
 } // namespace viotecs
-

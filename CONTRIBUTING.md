@@ -1,4 +1,4 @@
-# Contributing to the Engine
+# Contributing to the Library
 
 First off, thank you for considering contributing to this project!
 This guide will help you understand how to contribute effectively.

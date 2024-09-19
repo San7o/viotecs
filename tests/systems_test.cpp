@@ -32,28 +32,46 @@ using namespace viotecs;
 /* Used to count how many times SystemC runs */
 int runs = 0;
 
-struct ComponentA : component {
+struct ComponentA : component
+{
     int payload;
-    ComponentA() {}
-    ComponentA(int payload) : payload(payload) {}
+    ComponentA()
+    {
+    }
+    ComponentA(int payload) : payload(payload)
+    {
+    }
 };
-struct ComponentB : component {
+struct ComponentB : component
+{
     int payload;
-    ComponentB() {}
-    ComponentB(int payload) : payload(payload) {}
+    ComponentB()
+    {
+    }
+    ComponentB(int payload) : payload(payload)
+    {
+    }
 };
-struct ComponentC : component {
+struct ComponentC : component
+{
     int payload;
-    ComponentC() {}
-    ComponentC(int payload) : payload(payload) {}
+    ComponentC()
+    {
+    }
+    ComponentC(int payload) : payload(payload)
+    {
+    }
 };
 
 /* This system increases the payload of ComponentA and ComponentB */
-struct SystemA : system<ComponentA, ComponentB> {
-    void run(std::vector<entity_t> matched) const override {
+struct SystemA : system<ComponentA, ComponentB>
+{
+    void run(std::vector<entity_t> matched) const override
+    {
         std::string test_name = "SystemA";
         ASSERT(matched.size() == 1);
-        for (auto e : matched) {
+        for (auto e : matched)
+        {
             auto component_a = world::entity_to_component<ComponentA>(e);
             auto component_b = world::entity_to_component<ComponentB>(e);
             component_a->payload++;
@@ -63,16 +81,20 @@ struct SystemA : system<ComponentA, ComponentB> {
 };
 
 /* ComponentC is not assigned to any entity */
-struct SystemB : system<ComponentC> {
-    void run(std::vector<entity_t> matched) const override {
+struct SystemB : system<ComponentC>
+{
+    void run(std::vector<entity_t> matched) const override
+    {
         std::string test_name = "SystemB";
         ASSERT(matched.size() == 0);
     }
 };
 
 /* This system has no dependencies and should always run */
-struct SystemC : system<none> {
-    void run(std::vector<entity_t> matched) const override {
+struct SystemC : system<none>
+{
+    void run(std::vector<entity_t> matched) const override
+    {
         std::string test_name = "SystemC";
         ASSERT(matched.size() == 0);
         runs++;

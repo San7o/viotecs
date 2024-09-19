@@ -24,8 +24,8 @@
  *
  */
 
-#include "valfuzz/valfuzz.hpp"
 #include "oak/oak.hpp"
+#include "valfuzz/valfuzz.hpp"
 #include "viotecs/world.hpp"
 
 using namespace viotecs;

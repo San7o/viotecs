@@ -82,7 +82,7 @@ template <typename... T> struct registered_systems
  * Use it only once.
  */
 #define REGISTER_SYSTEMS(...)                                                  \
-    void viotecs::world::run_systems()                                     \
+    void viotecs::world::run_systems()                                         \
     {                                                                          \
         typedef registered_systems<__VA_ARGS__>::systems registered_systems;   \
         const registered_systems systems;                                      \

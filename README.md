@@ -63,4 +63,4 @@ guide in [tests/README.md](./tests/README.md).
 
 # License
 
-The engine is licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) license.
+The library is licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) license.

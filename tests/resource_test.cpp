@@ -32,9 +32,12 @@
 
 using namespace viotecs;
 
-struct TestResource : resource {
+struct TestResource : resource
+{
     int payload;
-    TestResource(int payload) : payload(payload) {}
+    TestResource(int payload) : payload(payload)
+    {
+    }
 };
 
 TEST(res, "Add, get and remove a resource from the world")
@@ -44,7 +47,7 @@ TEST(res, "Add, get and remove a resource from the world")
     /* add the resource */
     TestResource resource = TestResource(69);
     world::add_resource<TestResource>(resource);
-    
+
     /* get the resources */
     auto resources = world::get_resources();
     ASSERT(resources != nullptr);
@@ -60,7 +63,7 @@ TEST(res, "Add, get and remove a resource from the world")
     world::remove_resource<TestResource>();
     ASSERT(resources->size() == 0);
     ASSERT(resources->count(typeid(TestResource)) == 0);
-    
+
     /* get the deleted resource */
     my_resource = world::get_resource<TestResource>();
     ASSERT(my_resource == nullptr);

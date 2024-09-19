@@ -24,7 +24,9 @@
 /// 
 /// \subsection install Installation
 /// To use the viotecs, you need to include the headers from the `include` directory
-/// and add `src/viotecs.cpp` to your sources in your project.
+/// and add `src/viotecs.cpp` to your sources in your project. The ECS
+/// uses [Oak](https://github.com/San7o/oak) for logging, which must be included
+/// in your project as well.
 ///
 /// If you use CPM, you can add the following to your `CMakeLists.txt`:
 /// ```cmake
@@ -55,7 +57,7 @@
 /// ```cpp
 /// entity_t entity = world::new_entity();
 /// ```
-/// This will return a new entity with a unique ID or -1 if the entity could not
+/// This will return a new entity with a unique ID or `-1` if the entity could not
 /// be created.
 ///
 /// \section component Assigning Components to Entities

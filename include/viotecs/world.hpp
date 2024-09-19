@@ -26,13 +26,12 @@
 
 #pragma once
 
+#include "oak/oak.hpp"
 #include "viotecs/component.hpp"
 #include "viotecs/ecs_types.hpp"
 #include "viotecs/entity.hpp"
 #include "viotecs/resource.hpp"
 #include "viotecs/system.hpp"
-#include "viotecs/ecs_types.hpp"
-#include "oak/oak.hpp"
 
 #include <algorithm>
 #include <memory>
@@ -126,7 +125,8 @@ class world
 
         if (!resources->count(std::type_index(typeid(R))))
         {
-            OAK_ERROR("Resource not found: {}", std::type_index(typeid(R)).name());
+            OAK_ERROR("Resource not found: {}",
+                      std::type_index(typeid(R)).name());
             return nullptr;
         }
 
@@ -236,7 +236,8 @@ class world
 
         if (!resources->count(std::type_index(typeid(R))))
         {
-            OAK_ERROR("Resource not found: {}", std::type_index(typeid(R)).name());
+            OAK_ERROR("Resource not found: {}",
+                      std::type_index(typeid(R)).name());
             return;
         }
 
@@ -269,7 +270,8 @@ class world
 
         if (!components->count(std::type_index(typeid(C))))
         {
-            OAK_ERROR("Component not found: {}", std::type_index(typeid(C)).name());
+            OAK_ERROR("Component not found: {}",
+                      std::type_index(typeid(C)).name());
             return nullptr;
         }
 
@@ -309,7 +311,8 @@ class world
                           std::tuple_size_v<std::remove_reference_t<Tuple>>>{});
     }
     template <typename... T>
-    static std::vector<viotecs::entity_t> query_components_tuple(std::tuple<T...>)
+    static std::vector<viotecs::entity_t>
+    query_components_tuple(std::tuple<T...>)
     {
         return query_components<T...>();
     }
