@@ -1,0 +1,149 @@
+// vim: set filetype=cpp :
+///
+/// \mainpage Viotecs
+///
+/// Viotecs (viotECS) is the official ECS of the Brenta Engine. The library can be used
+/// as a standalone module for your applications, It does not depend on the
+/// engine. 
+///
+/// \section ecs Entity Component System
+///
+/// The ECS is a design pattern that allows you to structure your code in
+/// a way that is more modular and scalable.
+///
+/// The ECS is composed of four main parts:
+/// - **Entity**: an entity is an object in the game, it is just an ID
+/// - **Component**: a component is a piece of data that is attached to an entity
+/// - **System**: a system is a piece of code that operates on entities with
+/// specific components. They get autocamically executed at each game tick.
+/// - **Resources**: resources are shared global data that can be accessed by any
+/// system
+///
+/// With those building blocks, you can create any game or application. We will
+/// go more in depth on how to use the ECS in the following sections.
+/// 
+/// \subsection install Installation
+/// To use the viotecs, you need to include the headers from the `include` directory
+/// and add `src/viotecs.cpp` to your sources in your project.
+///
+/// If you use CPM, you can add the following to your `CMakeLists.txt`:
+/// ```cmake
+/// CPMAddPackage(
+///     NAME viotecs
+///     GITHUB_REPOSITORY San7o/viotecs
+///     GIT_TAG v1.0.0
+///     DOWNLOAD_ONLY True
+/// )
+/// ```
+///
+/// To use the ECS, just include the `viotecs/viotecs.hpp` header:
+/// ```cpp
+/// #include "viotecs/viotecs.hpp"
+/// ```
+///
+/// \section world The World
+///
+/// Everything that exists in the ECS is contained in the `World` class. The
+/// World is a singleton accessible from anywhere in the code and It will be your
+/// entry point to the ECS. You can create entities, assign components to them,
+/// and query entities with specific components. Let's take a look on how to use
+/// the World API.
+///
+/// \section entity Creating new Entities
+/// Creating an entity is very straightforward, you can ask the world to create
+/// one for you:
+/// ```cpp
+/// entity_t entity = world::new_entity();
+/// ```
+/// This will return a new entity with a unique ID or -1 if the entity could not
+/// be created.
+///
+/// \section component Assigning Components to Entities
+///
+/// To assign a component to an entity, first you need to create a component.
+/// Components are just structs with data that extend the `Component` class. Note
+/// that you need to implement a default empty constructor for your component.
+///
+/// For example:
+/// ```cpp
+/// struct position_component : public component {
+///     float x, y, z;
+///     position_component(); // Required
+///     position_component(float x, float y, float z); // Optional
+/// }
+/// ```
+///
+/// You can find many more examples in `examples/components.cpp`.
+///
+/// Once you have created a component, you can assign it to an entity:
+/// ```cpp
+/// position_component position(0.0f, 0.0f, 0.0f);
+/// world::add_component<position_component>(entity, position);
+/// ```
+///
+/// \section system Creating Systems
+///
+/// Systems are classes that extend the `system` class. Systems can query
+/// entities with specific components and operate on them. They have a run method
+/// that will be called at each tick. Systems can define which components to
+/// query by specifying them in the template arguments (see the example below),
+/// they will receive a vector of entities that match the query.
+///
+/// **Note** that if your System does not need to query any component, you need
+/// to pass `None` as the template argument.
+///
+/// You can create a system like so:
+///
+/// ```cpp
+///
+/// struct renderer_system : system<model_component, transform_component> {
+///   // you need to implement the run method
+///   void run(std::vector<entity_t> matches) const override {
+///     if (matches.empty()) return;
+///
+///     for (auto match : matches) {
+///         // get the components associated to an entity
+///         auto model_component =
+///                world::entity_to_component<model_component>(match);
+///         auto my_model = model_component->mod;
+///
+///         // ...
+///
+///         my_model.draw(default_shader);
+///     }
+///   }
+/// };
+/// ```
+/// Note how we used `world::entity_to_component` to get the components
+/// associated with an entity. This is a common pattern you will use in your
+/// systems.
+///
+/// After you defined your system, you need to register it. This can be done
+/// throught a macro:
+/// ```cpp
+/// REGISTER_SYSTEMS(renderer_system);
+/// ```
+/// **Note**: You can register as many systems as you want but passing the
+/// systems as a comma separated list to the macro, but you have to use
+/// `REGISTER_SYSTEM` once and only once in your code, this is because systems
+/// are registered in a global type.
+///
+/// \section resources Resources
+///
+/// Resources are data, like components, but they are not associated with
+/// entities. Things like the day in the game, the number of enemies, etc should
+/// be resources.
+///
+/// You can create a resource like so:
+/// ```cpp
+/// struct day_resource : public resource {
+///    int day;
+///    day_resource() : day(0) {}
+///    day_resource(int day) : day(day) {}
+/// };
+/// ```
+///
+/// You can register a resource like so:
+/// ```cpp
+/// world::add_resource<day_resource>(day_resource(1337));
+/// ```
