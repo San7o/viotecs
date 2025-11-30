@@ -26,7 +26,7 @@
 
 #pragma once
 
-#include "oak/oak.hpp"
+#include <oak/oak.hpp>
 #include "viotecs/component.hpp"
 #include "viotecs/ecs_types.hpp"
 #include "viotecs/entity.hpp"
