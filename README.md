@@ -8,7 +8,7 @@ modular and scalable.
 # Documentation and Installation
 
 You can read the official online documentation
-[here](https://san7o.github.io/brenta-engine-documentation/viotecs/v1.0/).
+[here](https://san7o.github.io/viotecs/).
 
 # Quick Start
 
