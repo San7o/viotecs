@@ -35,7 +35,7 @@ namespace viotecs
 template <typename... T> struct system
 {
   using dependencies = std::tuple<T...>;
-  virtual void run(std::vector<entity_t> e) const {};
+  virtual void run([[maybe_unused]]std::vector<entity_t> e) const {};
 };
 
 /**

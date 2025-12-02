@@ -136,6 +136,25 @@ if (VIOTECS_BUILD_TESTS)
     valfuzz
     oak
     ${PROJECT_NAME})
+
+  if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    message(STATUS "Configuring Debug build options...")
+
+    target_compile_definitions(${PROJECT_NAME}_tests PRIVATE
+      ${VIOTECS_DEBUG_DEFINES})
+    target_compile_options(${PROJECT_NAME}_tests PRIVATE
+      ${VIOTECS_DEBUG_FLAGS}
+      ${VIOTECS_WARNING_FLAGS})
+    if(NOT MSVC)
+      target_link_options(${PROJECT_NAME}_tests PRIVATE
+        ${VIOTECS_DEBUG_LINK_FLAGS})
+    endif()
+  elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
+    message(STATUS "Configuring Release build options...")
+    target_compile_options(${PROJECT_NAME}_tests PRIVATE
+      ${VIOTECS_RELEASE_FLAGS}
+      ${VIOTECS_WARNING_FLAGS})
+  endif()
   
 endif()
 
