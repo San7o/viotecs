@@ -47,7 +47,6 @@ else()
   set(VIOTECS_DEBUG_LINK_FLAGS -fsanitize=address)
 endif()
 
-
 #
 # Options
 #
@@ -91,7 +90,7 @@ else()
     ${VIOTECS_SOURCES})  
 endif()
 
-target_include_directories(${PROJECT_NAME} PUBLIC
+target_include_directories(${PROJECT_NAME} PRIVATE
   ${PROJECT_SOURCE_DIR}/include
   ${oak_SOURCE_DIR}/include)
 target_compile_definitions(${PROJECT_NAME} PRIVATE
