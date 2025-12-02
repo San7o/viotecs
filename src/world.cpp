@@ -3,10 +3,9 @@
 // Mail:    giovanni.santini@proton.me
 // Github:  @San7o
 
-#include <viotecs/world.hpp>
-#include <oak/oak.hpp>
-
 #include <algorithm>
+#include <oak/oak.hpp>
+#include <viotecs/world.hpp>
 
 using namespace viotecs;
 
@@ -15,7 +14,8 @@ UMapPtr<type_id_t, resource> world::resources;
 UMapVecPtr<type_id_t, component> world::components;
 
 template <>
-void world::query_components_rec<none>(std::vector<entity_t> *entities)
+void world::query_components_rec<none>(
+  [[maybe_unused]] std::vector<entity_t> *entities)
 {
 }
 

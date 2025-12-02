@@ -11,7 +11,7 @@ using namespace viotecs;
 
 BEFORE()
 {
-  //oak::set_level(oak::level::disabled);
+  // oak::set_level(oak::level::disabled);
 
   oak::init_writer();
   oak::set_level(oak::level::error);

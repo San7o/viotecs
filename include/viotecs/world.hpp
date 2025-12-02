@@ -5,34 +5,31 @@
 
 #pragma once
 
+#include <algorithm>
+#include <memory>
 #include <oak/oak.hpp>
+#include <set>
+#include <typeindex>
+#include <typeinfo>
+#include <unordered_map>
+#include <vector>
 #include <viotecs/component.hpp>
 #include <viotecs/ecs_types.hpp>
 #include <viotecs/entity.hpp>
 #include <viotecs/resource.hpp>
 #include <viotecs/system.hpp>
 
-#include <algorithm>
-#include <memory>
-#include <set>
-#include <typeindex>
-#include <typeinfo>
-#include <unordered_map>
-#include <vector>
-
 namespace viotecs
 {
 
-using type_id_t = const void*;
-  
+using type_id_t = const void *;
+
 /**
  * Unique identifier of a type
  * Does not require RTTI
  */
-template <typename T>
-inline constexpr type_id_t type_id = &type_id<T>;
+template <typename T> inline constexpr type_id_t type_id = &type_id<T>;
 
-  
 using namespace types;
 
 /**
@@ -89,7 +86,7 @@ public:
    * @return The new entity
    */
   static entity_t new_entity();
-  
+
   /**
    * @brief Get a pointer to a resource
    *
@@ -178,8 +175,7 @@ public:
       return;
     }
 
-    resources->insert(
-      {type_id<R>, std::make_shared<R>(resource)});
+    resources->insert({type_id<R>, std::make_shared<R>(resource)});
     OAK_INFO("Added Resource with type_id: {}", type_id<R>);
   }
 
@@ -247,7 +243,7 @@ public:
     {
       return nullptr;
     }
- 
+
     if (!components->count(type_id<C>))
     {
       return nullptr;

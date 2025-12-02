@@ -60,12 +60,12 @@ template <typename... T> struct registered_systems
  * Use this macro anywhere (outside a function) to register systems.
  * Use it only once.
  */
-#define REGISTER_SYSTEMS(...)                                           \
-  void viotecs::world::run_systems()                                    \
-  {                                                                     \
-    typedef registered_systems<__VA_ARGS__>::systems registered_systems; \
-    const registered_systems systems;                                   \
-    viotecs::world::for_each(systems);                                  \
+#define REGISTER_SYSTEMS(...)                                                  \
+  void viotecs::world::run_systems()                                           \
+  {                                                                            \
+    typedef registered_systems<__VA_ARGS__>::systems registered_systems;       \
+    const registered_systems systems;                                          \
+    viotecs::world::for_each(systems);                                         \
   }
 
 } // namespace viotecs
