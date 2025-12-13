@@ -153,22 +153,22 @@ public:
    *
    * @tparam C The type of the component
    * @param entity The entity to add the component to
-   * @param new_component The component to add
+   * @param args The argument to construct the component
    *
    * Example:
    * ```
-   * world::add_component<position>(entity, {0, 0, 0});
+   * world::add_component<position>(entity, 0, 0, 0);
    * ```
    */
-  template <typename C>
-  static void add_component(types::entity_id e, C new_component)
+  template <typename C, typename... Args>
+  static void add_component(types::entity_id e, Args... args)
   {
     if (!components)
     {
       return;
     }
 
-    auto component = std::make_shared<C>(new_component);
+    auto component = std::make_shared<C>(C(args...));
 
     component->entity = e;
 
