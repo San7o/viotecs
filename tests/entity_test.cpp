@@ -8,18 +8,18 @@
 
 using namespace viotecs;
 
-TEST(entity, "Create and remove and entity")
+TEST(entity_test, "Create and remove and entity")
 {
   world::init();
 
-  entity_t entity = world::new_entity();
-  ASSERT(entity != -1);
+  entity_id e = world::new_entity();
+  ASSERT(e != -1);
 
   auto entities = world::get_entities();
   ASSERT(entities != nullptr);
   ASSERT(entities->size() == 1);
 
-  world::remove_entity(entity);
+  world::remove_entity(e);
   entities = world::get_entities();
   ASSERT(entities != nullptr);
   ASSERT(entities->size() == 0);
@@ -31,24 +31,24 @@ TEST(entities, "Create a bunch of new entities")
 {
   world::init();
 
-  entity_t entity = world::new_entity();
-  ASSERT(entity != -1);
-  entity = world::new_entity();
-  ASSERT(entity != -1);
-  entity = world::new_entity();
-  ASSERT(entity != -1);
-  entity = world::new_entity();
-  ASSERT(entity != -1);
-  entity = world::new_entity();
-  ASSERT(entity != -1);
-  entity = world::new_entity();
-  ASSERT(entity != -1);
-  entity = world::new_entity();
-  ASSERT(entity != -1);
-  entity = world::new_entity();
-  ASSERT(entity != -1);
-  entity = world::new_entity();
-  ASSERT(entity != -1);
+  entity_id e = world::new_entity();
+  ASSERT(e != -1);
+  e = world::new_entity();
+  ASSERT(e != -1);
+  e = world::new_entity();
+  ASSERT(e != -1);
+  e = world::new_entity();
+  ASSERT(e != -1);
+  e = world::new_entity();
+  ASSERT(e != -1);
+  e = world::new_entity();
+  ASSERT(e != -1);
+  e = world::new_entity();
+  ASSERT(e != -1);
+  e = world::new_entity();
+  ASSERT(e != -1);
+  e = world::new_entity();
+  ASSERT(e != -1);
 
   auto entities = world::get_entities();
   ASSERT(entities != nullptr);

@@ -45,7 +45,7 @@ struct ComponentC : component
 // This system increases the payload of ComponentA and ComponentB
 struct SystemA : system<ComponentA, ComponentB>
 {
-  void run(std::vector<entity_t> matched) const override
+  void run(std::vector<types::entity_id> matched) const override
   {
     std::string test_name = "SystemA";
     ASSERT(matched.size() == 1);
@@ -62,7 +62,7 @@ struct SystemA : system<ComponentA, ComponentB>
 // ComponentC is not assigned to any entity
 struct SystemB : system<ComponentC>
 {
-  void run(std::vector<entity_t> matched) const override
+  void run(std::vector<types::entity_id> matched) const override
   {
     std::string test_name = "SystemB";
     ASSERT(matched.size() == 0);
@@ -72,7 +72,7 @@ struct SystemB : system<ComponentC>
 // This system has no dependencies and should always run
 struct SystemC : system<none>
 {
-  void run(std::vector<entity_t> matched) const override
+  void run(std::vector<types::entity_id> matched) const override
   {
     std::string test_name = "SystemC";
     ASSERT(matched.size() == 0);
@@ -86,12 +86,13 @@ TEST(systems, "Run some registered systems")
 {
   world::init();
 
-  entity_t e = world::new_entity();
-  world::add_component<ComponentA>(e, 69);
-  world::add_component<ComponentB>(e, 69);
+  entity e = world::new_entity();
+  e.add_component<ComponentA>(69);
+  world::add_component<ComponentA>(e.id(), 69);
+  world::add_component<ComponentB>(e.id(), 69);
 
-  auto component_a = world::entity_to_component<ComponentA>(e);
-  auto component_b = world::entity_to_component<ComponentB>(e);
+  auto component_a = e.get_component<ComponentA>();
+  auto component_b = e.get_component<ComponentB>();
   ASSERT(component_a != nullptr);
   ASSERT(component_b != nullptr);
   ASSERT(component_a->payload == 69);

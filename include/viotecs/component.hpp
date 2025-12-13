@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include <viotecs/entity.hpp>
+#include <viotecs/types.hpp>
 
 namespace viotecs
 {
@@ -33,10 +33,11 @@ namespace viotecs
  * You need to provide a default constructor,
  * any other constructor is optional.
  */
-struct component
+class component
 {
-  entity_t entity;
-
+public:
+  types::entity_id entity;
+  
   bool operator==(const component &other) const
   {
     return (entity == other.entity);

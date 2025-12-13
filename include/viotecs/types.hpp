@@ -21,7 +21,7 @@ namespace types
  *
  * This type is used to represent a null value.
  */
-struct none
+class none
 {
 };
 
@@ -41,6 +41,8 @@ using UMapVecPtr = std::unique_ptr<UMapVec<T, G>>;
 
 template <typename T> using VecSPtr = std::shared_ptr<std::vector<SPtr<T>>>;
 
+typedef int entity_id;
+  
 } // namespace types
 
 } // namespace viotecs

@@ -25,10 +25,10 @@ TEST(entity_component, "Add a component to an entity")
 {
   world::init();
 
-  entity_t entity = world::new_entity();
-  ASSERT(entity != -1);
+  entity e = world::new_entity();
+  ASSERT(e.id() != -1);
 
-  world::add_component<AComponent>(entity, AComponent(69));
+  e.add_component<AComponent>(69);
   auto components = world::get_components();
   ASSERT(components != nullptr);
   ASSERT(components->size() == 1);
@@ -41,7 +41,7 @@ TEST(entity_component, "Add a component to an entity")
   auto component = static_cast<AComponent *>(type_components[0].get());
   ASSERT(component != nullptr);
   ASSERT(component->payload == 69);
-  ASSERT(component->entity == entity);
+  ASSERT(component->entity == e.id());
 
   world::destroy();
 }
@@ -50,14 +50,14 @@ TEST(entity_to_component, "EntityToComponent")
 {
   world::init();
 
-  entity_t entity = world::new_entity();
-  ASSERT(entity != -1);
+  entity e = world::new_entity();
+  ASSERT(e.id() != -1);
 
-  world::add_component<AComponent>(entity, AComponent(69));
-  auto component = world::entity_to_component<AComponent>(entity);
+  e.add_component<AComponent>(69);
+  auto component = e.get_component<AComponent>();
   ASSERT(component != nullptr);
   ASSERT(component->payload == 69);
-  ASSERT(component->entity == entity);
+  ASSERT(component->entity == e.id());
 
   world::destroy();
 }

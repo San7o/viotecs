@@ -3,26 +3,30 @@
 // Mail:    giovanni.santini@proton.me
 // Github:  @San7o
 
-#include <algorithm>
-#include <oak/oak.hpp>
+
+#include <viotecs/types.hpp>
 #include <viotecs/world.hpp>
+
+#include <oak/oak.hpp>
+
+#include <algorithm>
 
 using namespace viotecs;
 
-SetPtr<entity_t> world::entities;
+SetPtr<types::entity_id> world::entities;
 UMapPtr<type_id_t, resource> world::resources;
 UMapVecPtr<type_id_t, component> world::components;
 
 template <>
 void world::query_components_rec<none>(
-  [[maybe_unused]] std::vector<entity_t> *entities)
+[[maybe_unused]] std::vector<types::entity_id> *entities)
 {
 }
 
 void world::init()
 {
   using namespace types;
-  world::entities = std::make_unique<std::set<entity_t>>();
+  world::entities = std::make_unique<std::set<types::entity_id>>();
   world::resources = std::make_unique<UMap<type_id_t, resource>>();
   world::components = std::make_unique<UMapVec<type_id_t, component>>();
 
@@ -43,7 +47,7 @@ void world::tick()
   world::run_systems();
 }
 
-entity_t world::new_entity()
+types::entity_id world::new_entity()
 {
   if (!world::entities)
   {
@@ -56,7 +60,7 @@ entity_t world::new_entity()
     return 1;
   }
 
-  entity_t new_entity = *(world::entities->rbegin()) + 1;
+  types::entity_id new_entity = *(world::entities->rbegin()) + 1;
   world::entities->insert(new_entity);
 
   OAK_INFO("New entity created: {}", new_entity);
@@ -64,7 +68,7 @@ entity_t world::new_entity()
   return new_entity;
 }
 
-std::set<entity_t> *world::get_entities()
+std::set<types::entity_id> *world::get_entities()
 {
   if (!world::entities)
   {
@@ -91,24 +95,29 @@ UMapVec<type_id_t, component> *world::get_components()
   return world::components.get();
 }
 
-void world::remove_entity(entity_t entity)
+void world::remove_entity(types::entity_id e)
 {
   if (!world::entities)
   {
     return;
   }
 
-  world::entities->erase(entity);
+  world::entities->erase(e);
 
   for (auto iter = world::components->begin(); iter != world::components->end();
        iter++)
   {
     iter->second.erase(
       std::remove_if(iter->second.begin(), iter->second.end(),
-                     [&entity](const std::shared_ptr<component> &elem)
-                     { return elem->entity == entity; }),
+                     [&e](const std::shared_ptr<component> &elem)
+                     { return elem->entity == e; }),
       iter->second.end());
   }
 
-  OAK_INFO("Entity removed: {}", entity);
+  OAK_INFO("Entity removed: {}", e);
+}
+
+types::entity_id entity::id()
+{
+  return this->_id;
 }

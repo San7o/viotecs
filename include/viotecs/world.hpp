@@ -5,22 +5,46 @@
 
 #pragma once
 
+#include <viotecs/component.hpp>
+#include <viotecs/types.hpp>
+#include <viotecs/resource.hpp>
+#include <viotecs/system.hpp>
+
+#include <oak/oak.hpp>
+
 #include <algorithm>
 #include <memory>
-#include <oak/oak.hpp>
 #include <set>
 #include <typeindex>
 #include <typeinfo>
 #include <unordered_map>
 #include <vector>
-#include <viotecs/component.hpp>
-#include <viotecs/ecs_types.hpp>
-#include <viotecs/entity.hpp>
-#include <viotecs/resource.hpp>
-#include <viotecs/system.hpp>
 
 namespace viotecs
 {
+
+class entity
+{
+public:
+
+  entity() = delete;
+  entity(types::entity_id e) : _id(e) {}
+  ~entity() = default;
+
+  class builder;
+  
+  types::entity_id id();
+  
+  template<typename C, typename... Args>
+  void add_component(Args... args);
+
+  template <typename C>
+  C *get_component();
+
+private:
+  types::entity_id _id;
+
+};
 
 using type_id_t = const void *;
 
@@ -69,7 +93,7 @@ public:
    * @brief Get the entities container
    * @return The entities container, may be nullptr if not found
    */
-  static std::set<entity_t> *get_entities();
+  static std::set<types::entity_id> *get_entities();
   /**
    * @brief Get the resources container
    * @return The resources container, may be nullptr if not found
@@ -85,7 +109,7 @@ public:
    * @brief Create a new entity
    * @return The new entity
    */
-  static entity_t new_entity();
+  static types::entity_id new_entity();
 
   /**
    * @brief Get a pointer to a resource
@@ -135,7 +159,7 @@ public:
    * ```
    */
   template <typename C>
-  static void add_component(entity_t entity, C new_component)
+  static void add_component(types::entity_id e, C new_component)
   {
     if (!components)
     {
@@ -144,7 +168,7 @@ public:
 
     auto component = std::make_shared<C>(new_component);
 
-    component->entity = entity;
+    component->entity = e;
 
     if (!components->count(type_id<C>))
     {
@@ -192,7 +216,7 @@ public:
    * world::remove_entity(entity);
    * ```
    */
-  static void remove_entity(entity_t entity);
+  static void remove_entity(types::entity_id e);
 
   /**
    * @brief Remove a resource
@@ -234,10 +258,10 @@ public:
    *
    * Example:
    * ```
-   * auto component = world::entity_to_component<position_comp>(entity);
+   * auto component = world::entity_to_component<position_comp>(e);
    * ```
    */
-  template <typename C> static C *entity_to_component(entity_t entity)
+  template <typename C> static C *entity_to_component(types::entity_id e)
   {
     if (!components)
     {
@@ -251,7 +275,7 @@ public:
 
     for (auto component : components->at(type_id<C>))
     {
-      if (component->entity == entity)
+      if (component->entity == e)
       {
         return static_cast<C *>(component.get());
       }
@@ -268,7 +292,7 @@ public:
   static void run_systems();
 
 private:
-  static SetPtr<viotecs::entity_t> entities;
+  static SetPtr<viotecs::types::entity_id> entities;
   static UMapPtr<type_id_t, resource> resources;
   static UMapVecPtr<type_id_t, component> components;
 
@@ -285,27 +309,27 @@ private:
                     std::tuple_size_v<std::remove_reference_t<Tuple>>>{});
   }
   template <typename... T>
-  static std::vector<viotecs::entity_t> query_components_tuple(std::tuple<T...>)
+  static std::vector<viotecs::types::entity_id> query_components_tuple(std::tuple<T...>)
   {
     return query_components<T...>();
   }
   template <typename System> static void process(const System &system)
   {
     using dependencies = typename System::dependencies;
-    std::vector<viotecs::entity_t> matches =
+    std::vector<viotecs::types::entity_id> matches =
       query_components_tuple(dependencies{});
     system.run(matches);
   }
 
   template <typename C, typename... Components, typename N = none>
-  static std::vector<entity_t> query_components()
+  static std::vector<types::entity_id> query_components()
   {
     if (!world::components)
     {
       return {};
     }
 
-    std::vector<entity_t> matched;
+    std::vector<types::entity_id> matched;
 
     if (components->count(type_id<C>) == 0)
     {
@@ -328,11 +352,11 @@ private:
   }
 
   template <typename C, typename... Components>
-  static void query_components_rec(std::vector<entity_t> *entities)
+  static void query_components_rec(std::vector<types::entity_id> *entities)
   {
     if (entities->empty())
       return;
-    std::vector<entity_t> matched;
+    std::vector<types::entity_id> matched;
 
     if (components->count(type_id<C>) == 0)
     {
@@ -356,4 +380,17 @@ private:
   }
 };
 
+template<typename C, typename... Args>
+void entity::add_component(Args... args) {
+  world::add_component<C>(this->id(), args...);
+  return;
+}
+
+template <typename C>
+C *entity::get_component()
+{
+  return world::entity_to_component<C>(this->id());
+}
+
+  
 } // namespace viotecs

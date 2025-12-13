@@ -29,7 +29,7 @@ namespace viotecs
  * ```
  *
  */
-struct resource
+class resource
 {
 };
 
