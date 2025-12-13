@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['entity_0',['entity',['../structviotecs_1_1component.html#af1d7c816122e488fa1a52dc5b96ff59b',1,'viotecs::component']]]
+  ['entity_0',['entity',['../classviotecs_1_1component.html#ae3491485735072a82f9758264f6e34a0',1,'viotecs::component']]]
 ];

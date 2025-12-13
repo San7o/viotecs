@@ -108,34 +108,36 @@ $(function(){initNavTree('component_8hpp_source.html',''); initResizable(true); 
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;<a class="code" href="entity_8hpp.html">viotecs/entity.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;<a class="code" href="types_8hpp.html">viotecs/types.hpp</a>&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
 <div class="foldopen" id="foldopen00010" data-start="{" data-end="}">
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="namespaceviotecs.html">   10</a></span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceviotecs.html">viotecs</a></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="foldopen" id="foldopen00036" data-start="{" data-end="};">
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="structviotecs_1_1component.html">   36</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structviotecs_1_1component.html">component</a></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="classviotecs_1_1component.html">   36</a></span><span class="keyword">class </span><a class="code hl_class" href="classviotecs_1_1component.html">component</a></div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>{</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structviotecs_1_1component.html#af1d7c816122e488fa1a52dc5b96ff59b">   38</a></span>  <a class="code hl_typedef" href="namespaceviotecs.html#ac0c0179f7edd948ecc26fc783163e227">entity_t</a> <a class="code hl_variable" href="structviotecs_1_1component.html#af1d7c816122e488fa1a52dc5b96ff59b">entity</a>;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="foldopen" id="foldopen00040" data-start="{" data-end="}">
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="structviotecs_1_1component.html#ac917a08cd6565d1e94396b74cc18b3e4">   40</a></span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="structviotecs_1_1component.html#ac917a08cd6565d1e94396b74cc18b3e4">operator==</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structviotecs_1_1component.html">component</a> &amp;other)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">  </span>{</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordflow">return</span> (<a class="code hl_variable" href="structviotecs_1_1component.html#af1d7c816122e488fa1a52dc5b96ff59b">entity</a> == other.<a class="code hl_variable" href="structviotecs_1_1component.html#af1d7c816122e488fa1a52dc5b96ff59b">entity</a>);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  }</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="classviotecs_1_1component.html#ae3491485735072a82f9758264f6e34a0">   39</a></span>  <a class="code hl_typedef" href="namespaceviotecs_1_1types.html#acb59f9226804fcd805f03ca9263c47fb">types::entity_id</a> <a class="code hl_variable" href="classviotecs_1_1component.html#ae3491485735072a82f9758264f6e34a0">entity</a>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  </div>
+<div class="foldopen" id="foldopen00041" data-start="{" data-end="}">
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classviotecs_1_1component.html#ac917a08cd6565d1e94396b74cc18b3e4">   41</a></span>  <span class="keywordtype">bool</span> <a class="code hl_function" href="classviotecs_1_1component.html#ac917a08cd6565d1e94396b74cc18b3e4">operator==</a>(<span class="keyword">const</span> <a class="code hl_class" href="classviotecs_1_1component.html">component</a> &amp;other)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span><span class="keyword">  </span>{</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordflow">return</span> (<a class="code hl_class" href="classviotecs_1_1entity.html">entity</a> == other.<a class="code hl_variable" href="classviotecs_1_1component.html#ae3491485735072a82f9758264f6e34a0">entity</a>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  }</div>
 </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>};</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>};</div>
 </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>} <span class="comment">// namespace viotecs</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>} <span class="comment">// namespace viotecs</span></div>
 </div>
-<div class="ttc" id="aentity_8hpp_html"><div class="ttname"><a href="entity_8hpp.html">entity.hpp</a></div></div>
+<div class="ttc" id="aclassviotecs_1_1component_html"><div class="ttname"><a href="classviotecs_1_1component.html">viotecs::component</a></div><div class="ttdoc">Component class.</div><div class="ttdef"><b>Definition</b> <a href="#l00036">component.hpp:37</a></div></div>
+<div class="ttc" id="aclassviotecs_1_1component_html_ac917a08cd6565d1e94396b74cc18b3e4"><div class="ttname"><a href="classviotecs_1_1component.html#ac917a08cd6565d1e94396b74cc18b3e4">viotecs::component::operator==</a></div><div class="ttdeci">bool operator==(const component &amp;other) const</div><div class="ttdef"><b>Definition</b> <a href="#l00041">component.hpp:41</a></div></div>
+<div class="ttc" id="aclassviotecs_1_1component_html_ae3491485735072a82f9758264f6e34a0"><div class="ttname"><a href="classviotecs_1_1component.html#ae3491485735072a82f9758264f6e34a0">viotecs::component::entity</a></div><div class="ttdeci">types::entity_id entity</div><div class="ttdef"><b>Definition</b> <a href="#l00039">component.hpp:39</a></div></div>
+<div class="ttc" id="aclassviotecs_1_1entity_html"><div class="ttname"><a href="classviotecs_1_1entity.html">viotecs::entity</a></div><div class="ttdef"><b>Definition</b> <a href="world_8hpp_source.html#l00026">world.hpp:27</a></div></div>
+<div class="ttc" id="anamespaceviotecs_1_1types_html_acb59f9226804fcd805f03ca9263c47fb"><div class="ttname"><a href="namespaceviotecs_1_1types.html#acb59f9226804fcd805f03ca9263c47fb">viotecs::types::entity_id</a></div><div class="ttdeci">int entity_id</div><div class="ttdef"><b>Definition</b> <a href="types_8hpp_source.html#l00044">types.hpp:44</a></div></div>
 <div class="ttc" id="anamespaceviotecs_html"><div class="ttname"><a href="namespaceviotecs.html">viotecs</a></div><div class="ttdef"><b>Definition</b> <a href="#l00010">component.hpp:11</a></div></div>
-<div class="ttc" id="anamespaceviotecs_html_ac0c0179f7edd948ecc26fc783163e227"><div class="ttname"><a href="namespaceviotecs.html#ac0c0179f7edd948ecc26fc783163e227">viotecs::entity_t</a></div><div class="ttdeci">int entity_t</div><div class="ttdoc">Entity type.</div><div class="ttdef"><b>Definition</b> <a href="entity_8hpp_source.html#l00016">entity.hpp:16</a></div></div>
-<div class="ttc" id="astructviotecs_1_1component_html"><div class="ttname"><a href="structviotecs_1_1component.html">viotecs::component</a></div><div class="ttdoc">Component class.</div><div class="ttdef"><b>Definition</b> <a href="#l00036">component.hpp:37</a></div></div>
-<div class="ttc" id="astructviotecs_1_1component_html_ac917a08cd6565d1e94396b74cc18b3e4"><div class="ttname"><a href="structviotecs_1_1component.html#ac917a08cd6565d1e94396b74cc18b3e4">viotecs::component::operator==</a></div><div class="ttdeci">bool operator==(const component &amp;other) const</div><div class="ttdef"><b>Definition</b> <a href="#l00040">component.hpp:40</a></div></div>
-<div class="ttc" id="astructviotecs_1_1component_html_af1d7c816122e488fa1a52dc5b96ff59b"><div class="ttname"><a href="structviotecs_1_1component.html#af1d7c816122e488fa1a52dc5b96ff59b">viotecs::component::entity</a></div><div class="ttdeci">entity_t entity</div><div class="ttdef"><b>Definition</b> <a href="#l00038">component.hpp:38</a></div></div>
+<div class="ttc" id="atypes_8hpp_html"><div class="ttname"><a href="types_8hpp.html">types.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

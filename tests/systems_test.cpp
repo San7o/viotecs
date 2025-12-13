@@ -86,10 +86,10 @@ TEST(systems, "Run some registered systems")
 {
   world::init();
 
-  entity e = world::new_entity();
-  e.add_component<ComponentA>(69);
-  world::add_component<ComponentA>(e.id(), 69);
-  world::add_component<ComponentB>(e.id(), 69);
+  entity e = world::new_entity()
+    .add_component<ComponentA>(69)
+    .add_component<ComponentA>(69)
+    .add_component<ComponentB>(69);
 
   auto component_a = e.get_component<ComponentA>();
   auto component_b = e.get_component<ComponentB>();

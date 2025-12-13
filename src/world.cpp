@@ -47,7 +47,7 @@ void world::tick()
   world::run_systems();
 }
 
-types::entity_id world::new_entity()
+entity world::new_entity()
 {
   if (!world::entities)
   {
@@ -65,7 +65,7 @@ types::entity_id world::new_entity()
 
   OAK_INFO("New entity created: {}", new_entity);
 
-  return new_entity;
+  return entity(new_entity);
 }
 
 std::set<types::entity_id> *world::get_entities()
@@ -120,4 +120,10 @@ void world::remove_entity(types::entity_id e)
 types::entity_id entity::id()
 {
   return this->_id;
+}
+
+void entity::remove()
+{
+  world::remove_entity(this->id());
+  return;
 }

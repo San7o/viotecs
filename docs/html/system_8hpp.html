@@ -105,7 +105,8 @@ $(function(){initNavTree('system_8hpp.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">system.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;tuple&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="types_8hpp_source.html">viotecs/types.hpp</a>&gt;</code><br />
+<code>#include &lt;tuple&gt;</code><br />
 <code>#include &lt;typeindex&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 </div>
@@ -113,11 +114,11 @@ $(function(){initNavTree('system_8hpp.html',''); initResizable(true); });
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structviotecs_1_1system.html">viotecs::system&lt; T &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">System type.  <a href="structviotecs_1_1system.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classviotecs_1_1system.html">viotecs::system&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">System type.  <a href="classviotecs_1_1system.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structviotecs_1_1registered__systems.html">viotecs::registered_systems&lt; T &gt;</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registered Systems Type.  <a href="structviotecs_1_1registered__systems.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classviotecs_1_1registered__systems.html">viotecs::registered_systems&lt; T &gt;</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registered Systems Type.  <a href="classviotecs_1_1registered__systems.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
@@ -145,16 +146,16 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">  <span class="keywordtype">void</span> <a class="code hl_function" href="classviotecs_1_1world.html#a1f7b9e18457e1d643c7d0a277ea72925">viotecs::world::run_systems</a>()                                    \</div>
-<div class="line">  {                                                                     \</div>
-<div class="line">    <span class="keyword">typedef</span> registered_systems&lt;__VA_ARGS__&gt;::systems registered_systems; \</div>
-<div class="line">    <span class="keyword">const</span> registered_systems systems;                                   \</div>
-<div class="line">    viotecs::world::for_each(systems);                                  \</div>
+<b>Value:</b><div class="fragment"><div class="line">  <span class="keywordtype">void</span> <a class="code hl_function" href="classviotecs_1_1world.html#a1f7b9e18457e1d643c7d0a277ea72925">viotecs::world::run_systems</a>()                                           \</div>
+<div class="line">  {                                                                            \</div>
+<div class="line">    <span class="keyword">typedef</span> registered_systems&lt;__VA_ARGS__&gt;::systems registered_systems;       \</div>
+<div class="line">    <span class="keyword">const</span> registered_systems systems;                                          \</div>
+<div class="line">    viotecs::world::for_each(systems);                                         \</div>
 <div class="line">  }</div>
 <div class="ttc" id="aclassviotecs_1_1world_html_a1f7b9e18457e1d643c7d0a277ea72925"><div class="ttname"><a href="classviotecs_1_1world.html#a1f7b9e18457e1d643c7d0a277ea72925">viotecs::world::run_systems</a></div><div class="ttdeci">static void run_systems()</div><div class="ttdoc">Run all systems.</div></div>
 </div><!-- fragment --><p>Use this macro anywhere (outside a function) to register systems. Use it only once. </p>
 
-<p class="definition">Definition at line <a class="el" href="system_8hpp_source.html#l00063">63</a> of file <a class="el" href="system_8hpp_source.html">system.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="system_8hpp_source.html#l00067">67</a> of file <a class="el" href="system_8hpp_source.html">system.hpp</a>.</p>
 
 </div>
 </div>

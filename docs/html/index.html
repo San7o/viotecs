@@ -165,7 +165,7 @@ Creating Systems</h1>
 <div class="line">};</div>
 </div><!-- fragment --><p> Note how we used <code>world::entity_to_component</code> to get the components associated with an entity. This is a common pattern you will use in your systems.</p>
 <p>After you defined your system, you need to register it. This can be done throught a macro: </p><div class="fragment"><div class="line"><a class="code hl_define" href="system_8hpp.html#a3de0c7b1b1a5e98c6188e87bd35c85da">REGISTER_SYSTEMS</a>(renderer_system);</div>
-<div class="ttc" id="asystem_8hpp_html_a3de0c7b1b1a5e98c6188e87bd35c85da"><div class="ttname"><a href="system_8hpp.html#a3de0c7b1b1a5e98c6188e87bd35c85da">REGISTER_SYSTEMS</a></div><div class="ttdeci">#define REGISTER_SYSTEMS(...)</div><div class="ttdef"><b>Definition</b> <a href="system_8hpp_source.html#l00063">system.hpp:63</a></div></div>
+<div class="ttc" id="asystem_8hpp_html_a3de0c7b1b1a5e98c6188e87bd35c85da"><div class="ttname"><a href="system_8hpp.html#a3de0c7b1b1a5e98c6188e87bd35c85da">REGISTER_SYSTEMS</a></div><div class="ttdeci">#define REGISTER_SYSTEMS(...)</div><div class="ttdef"><b>Definition</b> <a href="system_8hpp_source.html#l00067">system.hpp:67</a></div></div>
 </div><!-- fragment --><p> <b>Note</b>: You can register as many systems as you want but passing the systems as a comma separated list to the macro, but you have to use <code>REGISTER_SYSTEM</code> once and only once in your code, this is because systems are registered in a global type.</p>
 <h1><a class="anchor" id="resources"></a>
 Resources</h1>

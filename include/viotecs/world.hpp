@@ -36,10 +36,12 @@ public:
   types::entity_id id();
   
   template<typename C, typename... Args>
-  void add_component(Args... args);
+  entity &add_component(Args... args);
 
   template <typename C>
   C *get_component();
+
+  void remove();
 
 private:
   types::entity_id _id;
@@ -109,7 +111,7 @@ public:
    * @brief Create a new entity
    * @return The new entity
    */
-  static types::entity_id new_entity();
+  static entity new_entity();
 
   /**
    * @brief Get a pointer to a resource
@@ -381,9 +383,9 @@ private:
 };
 
 template<typename C, typename... Args>
-void entity::add_component(Args... args) {
+entity &entity::add_component(Args... args) {
   world::add_component<C>(this->id(), args...);
-  return;
+  return *this;
 }
 
 template <typename C>

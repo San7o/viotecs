@@ -12,14 +12,14 @@ TEST(entity_test, "Create and remove and entity")
 {
   world::init();
 
-  entity_id e = world::new_entity();
-  ASSERT(e != -1);
+  entity e = world::new_entity();
+  ASSERT(e.id() != -1);
 
   auto entities = world::get_entities();
   ASSERT(entities != nullptr);
   ASSERT(entities->size() == 1);
 
-  world::remove_entity(e);
+  world::remove_entity(e.id());
   entities = world::get_entities();
   ASSERT(entities != nullptr);
   ASSERT(entities->size() == 0);
@@ -31,23 +31,23 @@ TEST(entities, "Create a bunch of new entities")
 {
   world::init();
 
-  entity_id e = world::new_entity();
+  types::entity_id e = world::new_entity().id();
   ASSERT(e != -1);
-  e = world::new_entity();
+  e = world::new_entity().id();
   ASSERT(e != -1);
-  e = world::new_entity();
+  e = world::new_entity().id();
   ASSERT(e != -1);
-  e = world::new_entity();
+  e = world::new_entity().id();
   ASSERT(e != -1);
-  e = world::new_entity();
+  e = world::new_entity().id();
   ASSERT(e != -1);
-  e = world::new_entity();
+  e = world::new_entity().id();
   ASSERT(e != -1);
-  e = world::new_entity();
+  e = world::new_entity().id();
   ASSERT(e != -1);
-  e = world::new_entity();
+  e = world::new_entity().id();
   ASSERT(e != -1);
-  e = world::new_entity();
+  e = world::new_entity().id();
   ASSERT(e != -1);
 
   auto entities = world::get_entities();

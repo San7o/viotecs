@@ -17,7 +17,7 @@ You can read the official online documentation
 Entities are objects in the game, It's just an ID:
 
 ```c++
-entity entity = world::new_entity();
+entity e = world::new_entity();
 ```
 
 ## Components
@@ -30,11 +30,15 @@ struct physics_component : component {
     float density;
     glm::vec3 velocity;
     glm::vec3 acceleration;
-    physics_component() {}
+    physics_component(float mass) : mass(mass) {}
 };
 
 // Somehwere
-world::add_component<physics_component>(entity, physics_component);
+world::add_component<physics_component>(entity, 10.0f);
+
+// or
+
+e.add_component<physics_component>(10.0f);
 ```
 
 ## Systems
@@ -50,7 +54,7 @@ struct fps_system : system<none> {
     }
 };
 
-// Somewhere
+// Somewhere, only once
 REGISTER_SYSTEMS(fps_system);
 ```
 

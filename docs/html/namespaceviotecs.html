@@ -114,17 +114,19 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Data Structures</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structviotecs_1_1component.html">component</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Component class.  <a href="structviotecs_1_1component.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classviotecs_1_1component.html">component</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Component class.  <a href="classviotecs_1_1component.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structviotecs_1_1registered__systems.html">registered_systems</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registered Systems Type.  <a href="structviotecs_1_1registered__systems.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classviotecs_1_1entity.html">entity</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structviotecs_1_1resource.html">resource</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resource type.  <a href="structviotecs_1_1resource.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classviotecs_1_1registered__systems.html">registered_systems</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registered Systems Type.  <a href="classviotecs_1_1registered__systems.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structviotecs_1_1system.html">system</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">System type.  <a href="structviotecs_1_1system.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classviotecs_1_1resource.html">resource</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resource type.  <a href="classviotecs_1_1resource.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classviotecs_1_1system.html">system</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">System type.  <a href="classviotecs_1_1system.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classviotecs_1_1world.html">world</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">World class.  <a href="classviotecs_1_1world.html#details">More...</a><br /></td></tr>
@@ -132,51 +134,29 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ac0c0179f7edd948ecc26fc783163e227" id="r_ac0c0179f7edd948ecc26fc783163e227"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac0c0179f7edd948ecc26fc783163e227">entity_t</a></td></tr>
-<tr class="memdesc:ac0c0179f7edd948ecc26fc783163e227"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entity type.  <br /></td></tr>
-<tr class="separator:ac0c0179f7edd948ecc26fc783163e227"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04699418681b985c0a298694c2483a83" id="r_a04699418681b985c0a298694c2483a83"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a04699418681b985c0a298694c2483a83">type_id_t</a> = const void*</td></tr>
-<tr class="separator:a04699418681b985c0a298694c2483a83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fde7d5153188d8ff155035801d62849" id="r_a5fde7d5153188d8ff155035801d62849"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5fde7d5153188d8ff155035801d62849">type_id_t</a> = const void *</td></tr>
+<tr class="separator:a5fde7d5153188d8ff155035801d62849"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:abdf0a58b59d9c7f657082b0410d1a74e" id="r_abdf0a58b59d9c7f657082b0410d1a74e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:abdf0a58b59d9c7f657082b0410d1a74e"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="#a04699418681b985c0a298694c2483a83">type_id_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#abdf0a58b59d9c7f657082b0410d1a74e">type_id</a> = &amp;type_id&lt;T&gt;</td></tr>
+<tr class="memitem:abdf0a58b59d9c7f657082b0410d1a74e"><td class="memTemplItemLeft" align="right" valign="top">constexpr <a class="el" href="#a5fde7d5153188d8ff155035801d62849">type_id_t</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#abdf0a58b59d9c7f657082b0410d1a74e">type_id</a> = &amp;type_id&lt;T&gt;</td></tr>
 <tr class="separator:abdf0a58b59d9c7f657082b0410d1a74e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="ac0c0179f7edd948ecc26fc783163e227" name="ac0c0179f7edd948ecc26fc783163e227"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0c0179f7edd948ecc26fc783163e227">&#9670;&#160;</a></span>entity_t</h2>
+<a id="a5fde7d5153188d8ff155035801d62849" name="a5fde7d5153188d8ff155035801d62849"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fde7d5153188d8ff155035801d62849">&#9670;&#160;</a></span>type_id_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int <a class="el" href="#ac0c0179f7edd948ecc26fc783163e227">viotecs::entity_t</a></td>
+          <td class="memname">using <a class="el" href="#a5fde7d5153188d8ff155035801d62849">viotecs::type_id_t</a> = const void *</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Entity type. </p>
-<p>This type is used to identify game objects in the game world. </p>
-
-<p class="definition">Definition at line <a class="el" href="entity_8hpp_source.html#l00016">16</a> of file <a class="el" href="entity_8hpp_source.html">entity.hpp</a>.</p>
-
-</div>
-</div>
-<a id="a04699418681b985c0a298694c2483a83" name="a04699418681b985c0a298694c2483a83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04699418681b985c0a298694c2483a83">&#9670;&#160;</a></span>type_id_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">using <a class="el" href="#a04699418681b985c0a298694c2483a83">viotecs::type_id_t</a> = const void*</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="world_8hpp_source.html#l00026">26</a> of file <a class="el" href="world_8hpp_source.html">world.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="world_8hpp_source.html#l00051">51</a> of file <a class="el" href="world_8hpp_source.html">world.hpp</a>.</p>
 
 </div>
 </div>
@@ -193,7 +173,7 @@ template&lt;typename T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="#a04699418681b985c0a298694c2483a83">type_id_t</a> viotecs::type_id = &amp;type_id&lt;T&gt;</td>
+          <td class="memname"><a class="el" href="#a5fde7d5153188d8ff155035801d62849">type_id_t</a> viotecs::type_id = &amp;type_id&lt;T&gt;</td>
         </tr>
       </table>
   </td>
@@ -204,7 +184,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 <p>Unique identifier of a type Does not require RTTI </p>
 
-<p class="definition">Definition at line <a class="el" href="world_8hpp_source.html#l00033">33</a> of file <a class="el" href="world_8hpp_source.html">world.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="world_8hpp_source.html#l00057">57</a> of file <a class="el" href="world_8hpp_source.html">world.hpp</a>.</p>
 
 </div>
 </div>

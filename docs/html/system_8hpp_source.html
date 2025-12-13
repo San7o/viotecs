@@ -108,45 +108,50 @@ $(function(){initNavTree('system_8hpp_source.html',''); initResizable(true); });
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;tuple&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;typeindex&gt;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceviotecs.html">viotecs</a></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="foldopen" id="foldopen00035" data-start="{" data-end="};">
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="structviotecs_1_1system.html">   35</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... T&gt; <span class="keyword">struct </span><a class="code hl_struct" href="structviotecs_1_1system.html">system</a></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="structviotecs_1_1system.html#ab396f722d7721921a01cd5ced6cdf2ff">   37</a></span>  <span class="keyword">using </span><a class="code hl_typedef" href="structviotecs_1_1system.html#ab396f722d7721921a01cd5ced6cdf2ff">dependencies</a> = std::tuple&lt;T...&gt;;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="structviotecs_1_1system.html#adecd23e9d9dbd6b3818d8b6248ed5192">   38</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="structviotecs_1_1system.html#adecd23e9d9dbd6b3818d8b6248ed5192">run</a>(std::vector&lt;entity_t&gt; e)<span class="keyword"> const </span>{};</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>};</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;<a class="code" href="types_8hpp.html">viotecs/types.hpp</a>&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;tuple&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;typeindex&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceviotecs.html">viotecs</a></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="};">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classviotecs_1_1system.html">   37</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... T&gt; <span class="keyword">class </span><a class="code hl_class" href="classviotecs_1_1system.html">system</a></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classviotecs_1_1system.html#ab396f722d7721921a01cd5ced6cdf2ff">   40</a></span>  <span class="keyword">using </span><a class="code hl_typedef" href="classviotecs_1_1system.html#ab396f722d7721921a01cd5ced6cdf2ff">dependencies</a> = std::tuple&lt;T...&gt;;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="classviotecs_1_1system.html#adf1f11bb4b29a398e4e9c02237e89f0d">   41</a></span>  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classviotecs_1_1system.html#adf1f11bb4b29a398e4e9c02237e89f0d">run</a>([[maybe_unused]]std::vector&lt;types::entity_id&gt; e)<span class="keyword"> const </span>{};</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>};</div>
 </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="foldopen" id="foldopen00054" data-start="{" data-end="};">
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="structviotecs_1_1registered__systems.html">   54</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... T&gt; <span class="keyword">struct </span><a class="code hl_struct" href="structviotecs_1_1registered__systems.html">registered_systems</a></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>{</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="structviotecs_1_1registered__systems.html#a7ad2f64cddda197724e5f117fae3d5b1">   56</a></span>  <span class="keyword">using </span><a class="code hl_typedef" href="structviotecs_1_1registered__systems.html#a7ad2f64cddda197724e5f117fae3d5b1">systems</a> = std::tuple&lt;T...&gt;;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>};</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="foldopen" id="foldopen00057" data-start="{" data-end="};">
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classviotecs_1_1registered__systems.html">   57</a></span><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... T&gt; <span class="keyword">class </span><a class="code hl_class" href="classviotecs_1_1registered__systems.html">registered_systems</a></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>{</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classviotecs_1_1registered__systems.html#a7ad2f64cddda197724e5f117fae3d5b1">   60</a></span>  <span class="keyword">using </span><a class="code hl_typedef" href="classviotecs_1_1registered__systems.html#a7ad2f64cddda197724e5f117fae3d5b1">systems</a> = std::tuple&lt;T...&gt;;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>};</div>
 </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="foldopen" id="foldopen00063" data-start="" data-end="">
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="system_8hpp.html#a3de0c7b1b1a5e98c6188e87bd35c85da">   63</a></span><span class="preprocessor">#define REGISTER_SYSTEMS(...)                                           \</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">  void viotecs::world::run_systems()                                    \</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">  {                                                                     \</span></div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">    typedef registered_systems&lt;__VA_ARGS__&gt;::systems registered_systems; \</span></div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">    const registered_systems systems;                                   \</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">    viotecs::world::for_each(systems);                                  \</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">  }</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="foldopen" id="foldopen00067" data-start="" data-end="">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="system_8hpp.html#a3de0c7b1b1a5e98c6188e87bd35c85da">   67</a></span><span class="preprocessor">#define REGISTER_SYSTEMS(...)                                                  \</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">  void viotecs::world::run_systems()                                           \</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">  {                                                                            \</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">    typedef registered_systems&lt;__VA_ARGS__&gt;::systems registered_systems;       \</span></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">    const registered_systems systems;                                          \</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">    viotecs::world::for_each(systems);                                         \</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">  }</span></div>
 </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>} <span class="comment">// namespace viotecs</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>} <span class="comment">// namespace viotecs</span></div>
+<div class="ttc" id="aclassviotecs_1_1registered__systems_html"><div class="ttname"><a href="classviotecs_1_1registered__systems.html">viotecs::registered_systems</a></div><div class="ttdoc">Registered Systems Type.</div><div class="ttdef"><b>Definition</b> <a href="#l00057">system.hpp:58</a></div></div>
+<div class="ttc" id="aclassviotecs_1_1registered__systems_html_a7ad2f64cddda197724e5f117fae3d5b1"><div class="ttname"><a href="classviotecs_1_1registered__systems.html#a7ad2f64cddda197724e5f117fae3d5b1">viotecs::registered_systems::systems</a></div><div class="ttdeci">std::tuple&lt; T... &gt; systems</div><div class="ttdef"><b>Definition</b> <a href="#l00060">system.hpp:60</a></div></div>
+<div class="ttc" id="aclassviotecs_1_1system_html"><div class="ttname"><a href="classviotecs_1_1system.html">viotecs::system</a></div><div class="ttdoc">System type.</div><div class="ttdef"><b>Definition</b> <a href="#l00037">system.hpp:38</a></div></div>
+<div class="ttc" id="aclassviotecs_1_1system_html_ab396f722d7721921a01cd5ced6cdf2ff"><div class="ttname"><a href="classviotecs_1_1system.html#ab396f722d7721921a01cd5ced6cdf2ff">viotecs::system::dependencies</a></div><div class="ttdeci">std::tuple&lt; T... &gt; dependencies</div><div class="ttdef"><b>Definition</b> <a href="#l00040">system.hpp:40</a></div></div>
+<div class="ttc" id="aclassviotecs_1_1system_html_adf1f11bb4b29a398e4e9c02237e89f0d"><div class="ttname"><a href="classviotecs_1_1system.html#adf1f11bb4b29a398e4e9c02237e89f0d">viotecs::system::run</a></div><div class="ttdeci">virtual void run(std::vector&lt; types::entity_id &gt; e) const</div><div class="ttdef"><b>Definition</b> <a href="#l00041">system.hpp:41</a></div></div>
 <div class="ttc" id="anamespaceviotecs_html"><div class="ttname"><a href="namespaceviotecs.html">viotecs</a></div><div class="ttdef"><b>Definition</b> <a href="component_8hpp_source.html#l00010">component.hpp:11</a></div></div>
-<div class="ttc" id="astructviotecs_1_1registered__systems_html"><div class="ttname"><a href="structviotecs_1_1registered__systems.html">viotecs::registered_systems</a></div><div class="ttdoc">Registered Systems Type.</div><div class="ttdef"><b>Definition</b> <a href="#l00054">system.hpp:55</a></div></div>
-<div class="ttc" id="astructviotecs_1_1registered__systems_html_a7ad2f64cddda197724e5f117fae3d5b1"><div class="ttname"><a href="structviotecs_1_1registered__systems.html#a7ad2f64cddda197724e5f117fae3d5b1">viotecs::registered_systems::systems</a></div><div class="ttdeci">std::tuple&lt; T... &gt; systems</div><div class="ttdef"><b>Definition</b> <a href="#l00056">system.hpp:56</a></div></div>
-<div class="ttc" id="astructviotecs_1_1system_html"><div class="ttname"><a href="structviotecs_1_1system.html">viotecs::system</a></div><div class="ttdoc">System type.</div><div class="ttdef"><b>Definition</b> <a href="#l00035">system.hpp:36</a></div></div>
-<div class="ttc" id="astructviotecs_1_1system_html_ab396f722d7721921a01cd5ced6cdf2ff"><div class="ttname"><a href="structviotecs_1_1system.html#ab396f722d7721921a01cd5ced6cdf2ff">viotecs::system::dependencies</a></div><div class="ttdeci">std::tuple&lt; T... &gt; dependencies</div><div class="ttdef"><b>Definition</b> <a href="#l00037">system.hpp:37</a></div></div>
-<div class="ttc" id="astructviotecs_1_1system_html_adecd23e9d9dbd6b3818d8b6248ed5192"><div class="ttname"><a href="structviotecs_1_1system.html#adecd23e9d9dbd6b3818d8b6248ed5192">viotecs::system::run</a></div><div class="ttdeci">virtual void run(std::vector&lt; entity_t &gt; e) const</div><div class="ttdef"><b>Definition</b> <a href="#l00038">system.hpp:38</a></div></div>
+<div class="ttc" id="atypes_8hpp_html"><div class="ttname"><a href="types_8hpp.html">types.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

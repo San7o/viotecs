@@ -1,4 +1,4 @@
 var component_8hpp =
 [
-    [ "viotecs::component", "structviotecs_1_1component.html", "structviotecs_1_1component" ]
+    [ "viotecs::component", "classviotecs_1_1component.html", "classviotecs_1_1component" ]
 ];

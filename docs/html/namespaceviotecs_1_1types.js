@@ -1,6 +1,7 @@
 var namespaceviotecs_1_1types =
 [
-    [ "none", "structviotecs_1_1types_1_1none.html", null ],
+    [ "none", "classviotecs_1_1types_1_1none.html", null ],
+    [ "entity_id", "namespaceviotecs_1_1types.html#acb59f9226804fcd805f03ca9263c47fb", null ],
     [ "SetPtr", "namespaceviotecs_1_1types.html#a080ee8cf1aee734b39fb300fcb6026ee", null ],
     [ "SPtr", "namespaceviotecs_1_1types.html#a0aedf1096829e1157a39e9b5b6966ffd", null ],
     [ "UMap", "namespaceviotecs_1_1types.html#ae3afdf2aaaa357a15983d4b8f8afa0d5", null ],
