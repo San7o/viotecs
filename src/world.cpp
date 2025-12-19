@@ -30,7 +30,7 @@ void world::init()
   world::resources = std::make_unique<UMap<type_id_t, resource>>();
   world::components = std::make_unique<UMapVec<type_id_t, component>>();
 
-  OAK_INFO("World initialized");
+  OAK_INFO("ecs: world initialized");
 }
 
 void world::destroy()
@@ -39,7 +39,7 @@ void world::destroy()
   world::components.reset();
   world::resources.reset();
 
-  OAK_INFO("World deleted");
+  OAK_INFO("ecs: world deleted");
 }
 
 void world::tick()
@@ -63,7 +63,7 @@ entity world::new_entity()
   types::entity_id new_entity = *(world::entities->rbegin()) + 1;
   world::entities->insert(new_entity);
 
-  OAK_INFO("New entity created: {}", new_entity);
+  OAK_DEBUG("ecs: new entity created: {}", new_entity);
 
   return entity(new_entity);
 }
@@ -114,7 +114,7 @@ void world::remove_entity(types::entity_id e)
       iter->second.end());
   }
 
-  OAK_INFO("Entity removed: {}", e);
+  OAK_DEBUG("ecs: entity removed: {}", e);
 }
 
 types::entity_id entity::id()

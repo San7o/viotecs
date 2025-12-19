@@ -181,7 +181,7 @@ public:
       components->at(type_id<C>).push_back(component);
     }
 
-    OAK_INFO("Added component with id: {}", type_id<C>);
+    OAK_DEBUG("ecs: added component with id: {}", type_id<C>);
   }
 
   /**
@@ -202,7 +202,7 @@ public:
     }
 
     resources->insert({type_id<R>, std::make_shared<R>(resource)});
-    OAK_INFO("Added Resource with type_id: {}", type_id<R>);
+    OAK_DEBUG("ecs: added Resource with type_id: {}", type_id<R>);
   }
 
   /**
