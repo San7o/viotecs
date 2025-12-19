@@ -36,7 +36,7 @@ public:
   types::entity_id id();
   
   template<typename C, typename... Args>
-  entity &add_component(Args... args);
+  entity &add_component(Args&&... args);
 
   template <typename C>
   C *get_component();
@@ -161,14 +161,14 @@ public:
    * ```
    */
   template <typename C, typename... Args>
-  static void add_component(types::entity_id e, Args... args)
+  static void add_component(types::entity_id e, Args&&... args)
   {
     if (!components)
     {
       return;
     }
 
-    auto component = std::make_shared<C>(C(args...));
+    auto component = std::make_shared<C>(C(std::forward<Args>(args)...));
 
     component->entity = e;
 
@@ -383,8 +383,8 @@ private:
 };
 
 template<typename C, typename... Args>
-entity &entity::add_component(Args... args) {
-  world::add_component<C>(this->id(), args...);
+entity &entity::add_component(Args&&... args) {
+  world::add_component<C>(this->id(), std::forward<Args>(args)...);
   return *this;
 }
 
