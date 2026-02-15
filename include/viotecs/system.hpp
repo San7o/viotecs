@@ -34,42 +34,25 @@ namespace viotecs
  *
  * If no components are needed, use system<none>.
  */
-template <typename... T> class system
+template <typename... T> class System
 {
 public:
-  using dependencies = std::tuple<T...>;
-  virtual void run([[maybe_unused]]std::vector<types::entity_id> e) const {};
+  using Dependencies = std::tuple<T...>;
+  virtual void run([[maybe_unused]]std::vector<EntityId> e) const {};
 };
+
 
 /**
  * @brief Registered Systems Type
  *
- * This class is used as a type to register systems in the World.  Use
- * the REGISTER_SYSTEMS(...) macro to register systems, this will
- * create an instance of Registered Systems with the systems
- * specified. This is used to call the systems in the World.
- *
- * Example:
- * ```
- * REGISTERED_SYSTEMS(system_a, system_b);
- * ```
+ * This class is used as a type to register systems in the World. Thi
+ * is used by `world::register_systems<MySystem, AnotherSystem>()` to
+ * save the types of the systems.
  */
-template <typename... T> class registered_systems
+template <typename... T> class RegisteredSystems
 {
 public:
-  using systems = std::tuple<T...>;
+  using Systems = std::tuple<T...>;
 };
-
-/**
- * Use this macro anywhere (outside a function) to register systems.
- * Use it only once.
- */
-#define REGISTER_SYSTEMS(...)                                                  \
-  void viotecs::world::run_systems()                                           \
-  {                                                                            \
-    typedef registered_systems<__VA_ARGS__>::systems registered_systems;       \
-    const registered_systems systems;                                          \
-    viotecs::world::for_each(systems);                                         \
-  }
-
+  
 } // namespace viotecs

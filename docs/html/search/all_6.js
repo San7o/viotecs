@@ -1,6 +1,6 @@
 var searchData=
 [
   ['new_20entities_0',['Creating new Entities',['../index.html#entity',1,'']]],
-  ['new_5fentity_1',['new_entity',['../classviotecs_1_1world.html#ace976ef8119cccac47c0bac6d8b1db86',1,'viotecs::world']]],
-  ['none_2',['none',['../classviotecs_1_1types_1_1none.html',1,'viotecs::types']]]
+  ['new_5fentity_1',['new_entity',['../classviotecs_1_1World.html#a419d8711a6ce7b6a044c410956463d6a',1,'viotecs::World']]],
+  ['none_2',['None',['../classviotecs_1_1None.html',1,'viotecs']]]
 ];

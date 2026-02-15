@@ -5,3 +5,7 @@ format:
 
 docs:
 	doxygen docs/doxygen.conf
+
+.PHONY: tests
+tests:
+	./build/viotecs_tests --no-multithread

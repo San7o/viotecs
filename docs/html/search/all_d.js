@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['world_0',['The World',['../index.html#world',1,'']]],
-  ['world_1',['world',['../classviotecs_1_1world.html',1,'viotecs::world'],['../classviotecs_1_1world.html#a353ef57087b8ff51a39f68f86faf515e',1,'viotecs::world::world()']]],
-  ['world_2ehpp_2',['world.hpp',['../world_8hpp.html',1,'']]]
+  ['world_0',['world',['../index.html#world',1,'The World'],['../classviotecs_1_1World.html',1,'viotecs::World'],['../classviotecs_1_1World.html#a1f3c6b3cc5e6a226030c3d83f3644356',1,'viotecs::World::World()']]],
+  ['world_2ehpp_1',['world.hpp',['../world_8hpp.html',1,'']]]
 ];

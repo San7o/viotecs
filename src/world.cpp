@@ -13,103 +13,105 @@
 
 using namespace viotecs;
 
-SetPtr<types::entity_id> world::entities;
-UMapPtr<type_id_t, resource> world::resources;
-UMapVecPtr<type_id_t, component> world::components;
+SetPtr<EntityId> World::entities;
+UMapPtr<TypeId, Resource> World::resources;
+UMapVecPtr<TypeId, Component> World::components;
 
 template <>
-void world::query_components_rec<none>(
-[[maybe_unused]] std::vector<types::entity_id> *entities)
+void World::query_components_rec<None>(
+[[maybe_unused]] std::vector<EntityId> *entities)
 {
 }
 
-void world::init()
+void World::init()
 {
-  using namespace types;
-  world::entities = std::make_unique<std::set<types::entity_id>>();
-  world::resources = std::make_unique<UMap<type_id_t, resource>>();
-  world::components = std::make_unique<UMapVec<type_id_t, component>>();
+  World::entities = std::make_unique<std::set<EntityId>>();
+  World::resources = std::make_unique<UMap<TypeId, Resource>>();
+  World::components = std::make_unique<UMapVec<TypeId, Component>>();
 
   OAK_INFO("ecs: world initialized");
 }
 
-void world::destroy()
+void World::destroy()
 {
-  world::entities.reset();
-  world::components.reset();
-  world::resources.reset();
+  World::entities.reset();
+  World::components.reset();
+  World::resources.reset();
 
   OAK_INFO("ecs: world deleted");
 }
 
-void world::tick()
+std::function<void()> World::run_systems;
+
+void World::tick()
 {
-  world::run_systems();
+  if (World::run_systems)
+    World::run_systems();
 }
 
-entity world::new_entity()
+Entity World::new_entity()
 {
-  if (!world::entities)
+  if (!World::entities)
   {
     return -1;
   }
 
-  if (world::entities->empty())
+  if (World::entities->empty())
   {
-    world::entities->insert(1);
+    World::entities->insert(1);
     return 1;
   }
 
-  types::entity_id new_entity = *(world::entities->rbegin()) + 1;
-  world::entities->insert(new_entity);
+  EntityId new_entity = *(World::entities->rbegin()) + 1;
+  World::entities->insert(new_entity);
 
   OAK_DEBUG("ecs: new entity created: {}", new_entity);
 
-  return entity(new_entity);
+  return Entity(new_entity);
 }
 
-std::set<types::entity_id> *world::get_entities()
+std::set<EntityId> *World::get_entities()
 {
-  if (!world::entities)
+  if (!World::entities)
   {
     return nullptr;
   }
-  return world::entities.get();
+  return World::entities.get();
 }
 
-UMap<type_id_t, resource> *world::get_resources()
+UMap<TypeId, Resource> *World::get_resources()
 {
-  if (!world::resources)
+  if (!World::resources)
   {
     return nullptr;
   }
-  return world::resources.get();
+  return World::resources.get();
 }
 
-UMapVec<type_id_t, component> *world::get_components()
+UMapVec<TypeId, Component> *World::get_components()
 {
-  if (!world::components)
+  if (!World::components)
   {
     return nullptr;
   }
-  return world::components.get();
+  return World::components.get();
 }
 
-void world::remove_entity(types::entity_id e)
+void World::remove_entity(EntityId e)
 {
-  if (!world::entities)
+  if (!World::entities)
   {
     return;
   }
 
-  world::entities->erase(e);
+  World::entities->erase(e);
 
-  for (auto iter = world::components->begin(); iter != world::components->end();
+  for (auto iter = World::components->begin(); iter != World::components->end();
        iter++)
   {
     iter->second.erase(
       std::remove_if(iter->second.begin(), iter->second.end(),
-                     [&e](const std::shared_ptr<component> &elem)
+                     [&e](const std::shared_ptr<Component> &elem)
                      { return elem->entity == e; }),
       iter->second.end());
   }
@@ -117,13 +119,13 @@ void world::remove_entity(types::entity_id e)
   OAK_DEBUG("ecs: entity removed: {}", e);
 }
 
-types::entity_id entity::id()
+EntityId Entity::id()
 {
   return this->_id;
 }
 
-void entity::remove()
+void Entity::remove()
 {
-  world::remove_entity(this->id());
+  World::remove_entity(this->id());
   return;
 }

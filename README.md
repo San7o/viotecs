@@ -17,7 +17,7 @@ You can read the official online documentation
 Entities are objects in the game, It's just an ID:
 
 ```c++
-entity e = world::new_entity();
+Entity e = World::new_entity();
 ```
 
 ## Components
@@ -25,37 +25,40 @@ entity e = world::new_entity();
 Components are pieces of data that are attached to an entity:
 
 ```c++
-struct physics_component : component {
+struct PhysicsComponent : Component {
     float mass;
     float density;
     glm::vec3 velocity;
     glm::vec3 acceleration;
-    physics_component(float mass) : mass(mass) {}
+    PhysicsComponent(float mass) : mass(mass) {}
 };
 
 // Somehwere
-world::add_component<physics_component>(entity, 10.0f);
+World::add_component<PhysicsComponent>(entity, 10.0f);
 
 // or
 
-e.add_component<physics_component>(10.0f);
+e.add_component<PhysicsComponent>(10.0f);
 ```
 
 ## Systems
 
-Systems are functions that operate on entities with specific components. They
-are called at each game tick by the `world`:
+Systems are functions that operate on entities with specific
+components. They are called at each game tick by the `world`:
 
 ```c++
-struct fps_system : system<none> {
-    void run(std::vector<entity_t> _) const override {
+struct FpsSystem : System<None> {
+    void run(std::vector<EntityId> _) const override {
         text::render_text("FPS: " + std::to_string(time::get_fps()), 25.0f, 25.0f,
                          0.35f, glm::vec3(1.0f, 0.9f, 0.0f));
     }
 };
+```
 
-// Somewhere, only once
-REGISTER_SYSTEMS(fps_system);
+To register you systems:
+
+```c++
+World::register_systems<FpsSystem>();
 ```
 
 ## Resources
@@ -63,10 +66,10 @@ REGISTER_SYSTEMS(fps_system);
 Resources are like global data, accessible by any system:
 
 ```c++
-struct my_resource : resource {
+struct MyResource : Resource {
     int my_data;
     bool is_ok;
-    my_resource() {}
+    MyResource() {}
 }
 ```
 

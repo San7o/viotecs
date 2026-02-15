@@ -10,7 +10,7 @@
 
 using namespace viotecs;
 
-struct AComponent : component
+struct AComponent : Component
 {
   int payload;
   AComponent()
@@ -23,13 +23,13 @@ struct AComponent : component
 
 TEST(entity_component, "Add a component to an entity")
 {
-  world::init();
+  World::init();
 
-  entity e = world::new_entity();
+  Entity e = World::new_entity();
   ASSERT(e.id() != -1);
 
   e.add_component<AComponent>(69);
-  auto components = world::get_components();
+  auto components = World::get_components();
   ASSERT(components != nullptr);
   ASSERT(components->size() == 1);
   ASSERT(components->count(type_id<AComponent>) == 1);
@@ -43,14 +43,14 @@ TEST(entity_component, "Add a component to an entity")
   ASSERT(component->payload == 69);
   ASSERT(component->entity == e.id());
 
-  world::destroy();
+  World::destroy();
 }
 
 TEST(entity_to_component, "EntityToComponent")
 {
-  world::init();
+  World::init();
 
-  entity e = world::new_entity();
+  Entity e = World::new_entity();
   ASSERT(e.id() != -1);
 
   e.add_component<AComponent>(69);
@@ -59,5 +59,5 @@ TEST(entity_to_component, "EntityToComponent")
   ASSERT(component->payload == 69);
   ASSERT(component->entity == e.id());
 
-  world::destroy();
+  World::destroy();
 }

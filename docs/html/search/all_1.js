@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['component_0',['component',['../classviotecs_1_1component.html',1,'viotecs']]],
+  ['component_0',['Component',['../classviotecs_1_1Component.html',1,'viotecs']]],
   ['component_20system_1',['Entity Component System',['../index.html#ecs',1,'']]],
   ['component_2ehpp_2',['component.hpp',['../component_8hpp.html',1,'']]],
   ['components_20to_20entities_3',['Assigning Components to Entities',['../index.html#component',1,'']]],

@@ -12,24 +12,25 @@ namespace viotecs
  * @brief Resource type
  *
  * This type is used to identify resources in the game world.
- * Resources are pieces of global data that can be accessed by any System.
+ * Resources are pieces of global data that can be accessed by any
+ * System.
  *
  * Example creating a resource:
  *
  * ```
- * struct wireframe_resource : resource {
+ * struct WireframeResource : Resource {
  *     bool enabled;
- *     wireframe_resource(bool e) : enabled(e) {}
+ *     WireframeResource(bool e) : enabled(e) {}
  * };
  * ```
  *
  * Example registering a resource:
  * ```
- * world::add_resource<wireframe_resource>(wireframe_resource(false));
+ * World::add_resource<WireframeResource>(false);
  * ```
  *
  */
-class resource
+class Resource
 {
 };
 

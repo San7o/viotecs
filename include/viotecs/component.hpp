@@ -20,25 +20,25 @@ namespace viotecs
  * Example creating a component:
  *
  * ```
- * struct transform_component : component {
+ * struct TransformComponent : Component {
  *   glm::vec3 position;
  *   glm::vec3 rotation;
  *   float scale;
  *
- *   transform_component() : ...
- *   transform_component(glm::vec3 position, ...
+ *   TransformComponent() : ...
+ *   TransformComponent(glm::vec3 position, ...
  * };
  * ```
  *
  * You need to provide a default constructor,
  * any other constructor is optional.
  */
-class component
+class Component
 {
 public:
-  types::entity_id entity;
+  EntityId entity;
   
-  bool operator==(const component &other) const
+  bool operator==(const Component &other) const
   {
     return (entity == other.entity);
   }

@@ -10,7 +10,7 @@
 
 using namespace viotecs;
 
-struct TestResource : resource
+struct TestResource : Resource
 {
   int payload;
   TestResource(int payload) : payload(payload)
@@ -20,42 +20,42 @@ struct TestResource : resource
 
 TEST(res, "Add, get and remove a resource from the world")
 {
-  world::init();
+  World::init();
 
   // add the resource
   TestResource resource = TestResource(69);
-  world::add_resource<TestResource>(resource);
+  World::add_resource<TestResource>(resource);
 
   // get the resources
-  auto resources = world::get_resources();
+  auto resources = World::get_resources();
   ASSERT(resources != nullptr);
   ASSERT(resources->size() == 1);
   ASSERT(resources->count(type_id<TestResource>) == 1);
 
   // get the resource
-  auto my_resource = world::get_resource<TestResource>();
+  auto my_resource = World::get_resource<TestResource>();
   ASSERT(my_resource != nullptr);
   ASSERT(my_resource->payload == 69);
 
   // remove the resource
-  world::remove_resource<TestResource>();
+  World::remove_resource<TestResource>();
   ASSERT(resources->size() == 0);
   ASSERT(resources->count(type_id<TestResource>) == 0);
 
   // get the deleted resource
-  my_resource = world::get_resource<TestResource>();
+  my_resource = World::get_resource<TestResource>();
   ASSERT(my_resource == nullptr);
 
-  world::destroy();
+  World::destroy();
 }
 
 TEST(no_res, "Get an unexisting resource")
 {
-  world::init();
+  World::init();
 
   // get the resource
-  auto my_resource = world::get_resource<TestResource>();
+  auto my_resource = World::get_resource<TestResource>();
   ASSERT(my_resource == nullptr);
 
-  world::destroy();
+  World::destroy();
 }

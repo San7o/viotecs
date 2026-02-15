@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['setptr_0',['SetPtr',['../namespaceviotecs_1_1types.html#a080ee8cf1aee734b39fb300fcb6026ee',1,'viotecs::types']]],
-  ['sptr_1',['SPtr',['../namespaceviotecs_1_1types.html#a0aedf1096829e1157a39e9b5b6966ffd',1,'viotecs::types']]],
-  ['system_2',['Entity Component System',['../index.html#ecs',1,'']]],
-  ['system_3',['system',['../classviotecs_1_1system.html',1,'viotecs']]],
-  ['system_2ehpp_4',['system.hpp',['../system_8hpp.html',1,'']]],
-  ['systems_5',['Creating Systems',['../index.html#system',1,'']]],
-  ['systems_6',['systems',['../classviotecs_1_1registered__systems.html#a7ad2f64cddda197724e5f117fae3d5b1',1,'viotecs::registered_systems']]]
+  ['setptr_0',['SetPtr',['../namespaceviotecs.html#a793ddb6219f8bd5d9dc31a72b67bfe09',1,'viotecs']]],
+  ['sptr_1',['SPtr',['../namespaceviotecs.html#acda37f9dcda4c358ab9b62f91c7954ea',1,'viotecs']]],
+  ['system_2',['system',['../index.html#ecs',1,'Entity Component System'],['../classviotecs_1_1System.html',1,'viotecs::System&lt; T &gt;']]],
+  ['system_2ehpp_3',['system.hpp',['../system_8hpp.html',1,'']]],
+  ['systems_4',['systems',['../index.html#system',1,'Creating Systems'],['../classviotecs_1_1RegisteredSystems.html#a9caf907d63ddc6a838ebc91070839346',1,'viotecs::RegisteredSystems::Systems']]]
 ];

@@ -13,15 +13,12 @@
 namespace viotecs
 {
 
-namespace types
-{
-
 /**
  * @brief None type
  *
  * This type is used to represent a null value.
  */
-class none
+class None
 {
 };
 
@@ -41,8 +38,6 @@ using UMapVecPtr = std::unique_ptr<UMapVec<T, G>>;
 
 template <typename T> using VecSPtr = std::shared_ptr<std::vector<SPtr<T>>>;
 
-typedef int entity_id;
+typedef int EntityId;
   
-} // namespace types
-
 } // namespace viotecs

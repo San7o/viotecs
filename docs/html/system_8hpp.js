@@ -1,6 +1,5 @@
 var system_8hpp =
 [
-    [ "viotecs::system< T >", "classviotecs_1_1system.html", "classviotecs_1_1system" ],
-    [ "viotecs::registered_systems< T >", "classviotecs_1_1registered__systems.html", "classviotecs_1_1registered__systems" ],
-    [ "REGISTER_SYSTEMS", "system_8hpp.html#a3de0c7b1b1a5e98c6188e87bd35c85da", null ]
+    [ "viotecs::System< T >", "classviotecs_1_1System.html", "classviotecs_1_1System" ],
+    [ "viotecs::RegisteredSystems< T >", "classviotecs_1_1RegisteredSystems.html", "classviotecs_1_1RegisteredSystems" ]
 ];

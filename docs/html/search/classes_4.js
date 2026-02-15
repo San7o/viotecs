@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['system_0',['system',['../classviotecs_1_1system.html',1,'viotecs']]]
+  ['system_0',['System',['../classviotecs_1_1System.html',1,'viotecs']]]
 ];

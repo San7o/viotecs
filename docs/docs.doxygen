@@ -55,7 +55,7 @@
 /// Creating an entity is very straightforward, you can ask the world to create
 /// one for you:
 /// ```cpp
-/// entity_t entity = world::new_entity();
+/// Entity entity = World::new_entity();
 /// ```
 /// This will return a new entity with a unique ID or `-1` if the entity could not
 /// be created.
@@ -68,10 +68,10 @@
 ///
 /// For example:
 /// ```cpp
-/// struct position_component : public component {
+/// struct PositionComponent : public Component {
 ///     float x, y, z;
-///     position_component(); // Required
-///     position_component(float x, float y, float z); // Optional
+///     PositionComponent(); // Required
+///     PositionComponent(float x, float y, float z); // Optional
 /// }
 /// ```
 ///
@@ -79,8 +79,11 @@
 ///
 /// Once you have created a component, you can assign it to an entity:
 /// ```cpp
-/// position_component position(0.0f, 0.0f, 0.0f);
-/// world::add_component<position_component>(entity, position);
+/// PositionComponent position(0.0f, 0.0f, 0.0f);
+/// world::add_component<PositionComponent>(entity, position);
+///
+/// // Or alternatively
+/// entity.add_component<PositionComponent>(0.0f, 0.0f, 0.0f);
 /// ```
 ///
 /// \section system Creating Systems
@@ -98,15 +101,15 @@
 ///
 /// ```cpp
 ///
-/// struct renderer_system : system<model_component, transform_component> {
+/// struct RenderSystem : System<ModelComponent, TransformComponent> {
 ///   // you need to implement the run method
-///   void run(std::vector<entity_t> matches) const override {
+///   void run(std::vector<Entity> matches) const override {
 ///     if (matches.empty()) return;
 ///
 ///     for (auto match : matches) {
 ///         // get the components associated to an entity
 ///         auto model_component =
-///                world::entity_to_component<model_component>(match);
+///                World::entity_to_component<ModelComponent>(match);
 ///         auto my_model = model_component->mod;
 ///
 ///         // ...
@@ -120,15 +123,15 @@
 /// associated with an entity. This is a common pattern you will use in your
 /// systems.
 ///
-/// After you defined your system, you need to register it. This can be done
-/// throught a macro:
+/// After you defined your system, you need to register it. This can be
+/// done via the world:
 /// ```cpp
-/// REGISTER_SYSTEMS(renderer_system);
+/// World::register_systems<RenderSystem>();
 /// ```
+///
 /// **Note**: You can register as many systems as you want but passing the
-/// systems as a comma separated list to the macro, but you have to use
-/// `REGISTER_SYSTEM` once and only once in your code, this is because systems
-/// are registered in a global type.
+/// systems as a comma separated list. You can also call this function
+/// again to change the current registeres systems.
 ///
 /// \section resources Resources
 ///
@@ -138,14 +141,14 @@
 ///
 /// You can create a resource like so:
 /// ```cpp
-/// struct day_resource : public resource {
+/// struct DayResource : public Resource {
 ///    int day;
-///    day_resource() : day(0) {}
-///    day_resource(int day) : day(day) {}
+///    DatResource() : day(0) {}
+///    DayResource(int day) : day(day) {}
 /// };
 /// ```
 ///
 /// You can register a resource like so:
 /// ```cpp
-/// world::add_resource<day_resource>(day_resource(1337));
+/// World::add_resource<DayResource>(1337);
 /// ```

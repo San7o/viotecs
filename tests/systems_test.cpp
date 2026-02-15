@@ -11,7 +11,7 @@ using namespace viotecs;
 // Used to count how many times SystemC runs
 int runs = 0;
 
-struct ComponentA : component
+struct ComponentA : Component
 {
   int payload;
   ComponentA()
@@ -21,7 +21,7 @@ struct ComponentA : component
   {
   }
 };
-struct ComponentB : component
+struct ComponentB : Component
 {
   int payload;
   ComponentB()
@@ -31,7 +31,7 @@ struct ComponentB : component
   {
   }
 };
-struct ComponentC : component
+struct ComponentC : Component
 {
   int payload;
   ComponentC()
@@ -43,16 +43,16 @@ struct ComponentC : component
 };
 
 // This system increases the payload of ComponentA and ComponentB
-struct SystemA : system<ComponentA, ComponentB>
+struct SystemA : System<ComponentA, ComponentB>
 {
-  void run(std::vector<types::entity_id> matched) const override
+  void run(std::vector<EntityId> matched) const override
   {
     std::string test_name = "SystemA";
     ASSERT(matched.size() == 1);
     for (auto e : matched)
     {
-      auto component_a = world::entity_to_component<ComponentA>(e);
-      auto component_b = world::entity_to_component<ComponentB>(e);
+      auto component_a = World::entity_to_component<ComponentA>(e);
+      auto component_b = World::entity_to_component<ComponentB>(e);
       component_a->payload++;
       component_b->payload++;
     }
@@ -60,9 +60,9 @@ struct SystemA : system<ComponentA, ComponentB>
 };
 
 // ComponentC is not assigned to any entity
-struct SystemB : system<ComponentC>
+struct SystemB : System<ComponentC>
 {
-  void run(std::vector<types::entity_id> matched) const override
+  void run(std::vector<EntityId> matched) const override
   {
     std::string test_name = "SystemB";
     ASSERT(matched.size() == 0);
@@ -70,9 +70,9 @@ struct SystemB : system<ComponentC>
 };
 
 // This system has no dependencies and should always run
-struct SystemC : system<none>
+struct SystemC : System<None>
 {
-  void run(std::vector<types::entity_id> matched) const override
+  void run(std::vector<EntityId> matched) const override
   {
     std::string test_name = "SystemC";
     ASSERT(matched.size() == 0);
@@ -80,13 +80,12 @@ struct SystemC : system<none>
   }
 };
 
-REGISTER_SYSTEMS(SystemA, SystemB, SystemC);
-
 TEST(systems, "Run some registered systems")
 {
-  world::init();
+  World::init();
+  World::register_systems<SystemA, SystemB, SystemC>();
 
-  entity e = world::new_entity()
+  Entity e = World::new_entity()
     .add_component<ComponentA>(69)
     .add_component<ComponentA>(69)
     .add_component<ComponentB>(69);
@@ -98,19 +97,19 @@ TEST(systems, "Run some registered systems")
   ASSERT(component_a->payload == 69);
   ASSERT(component_b->payload == 69);
 
-  world::tick();
+  World::tick();
   ASSERT(component_a->payload == 70);
   ASSERT(component_b->payload == 70);
 
-  world::tick();
+  World::tick();
   ASSERT(component_a->payload == 71);
   ASSERT(component_b->payload == 71);
 
-  world::tick();
+  World::tick();
   ASSERT(component_a->payload == 72);
   ASSERT(component_b->payload == 72);
 
   ASSERT(runs == 3);
 
-  world::destroy();
+  World::destroy();
 }
