@@ -17,9 +17,8 @@ SetPtr<EntityId> World::entities;
 UMapPtr<TypeId, Resource> World::resources;
 UMapVecPtr<TypeId, Component> World::components;
 
-  
 template <>
-inline void World::query_components_rec<None>(
+void World::query_components_rec<None>(
    [[maybe_unused]] std::vector<EntityId> *entities) {}
 
 void World::init()

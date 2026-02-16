@@ -403,3 +403,8 @@ C *Entity::get_component()
 
   
 } // namespace viotecs
+
+
+template <>
+void viotecs::World::query_components_rec<viotecs::None>(
+      [[maybe_unused]] std::vector<EntityId> *entities);
