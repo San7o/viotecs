@@ -361,7 +361,7 @@ private:
   }
 
   template <typename C, typename... Components>
-  static void query_components_rec(std::vector<EntityId> *entities)
+  static inline void query_components_rec(std::vector<EntityId> *entities)
   {
     if (entities->empty())
       return;
