@@ -95,6 +95,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE
   ${oak_SOURCE_DIR}/include)
 target_compile_definitions(${PROJECT_NAME} PRIVATE
   ${VIOTECS_DEFINES})
+target_link_libraries(${PROJECT_NAME} PRIVATE
+  oak)
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
   message(STATUS "Configuring Debug build options...")
