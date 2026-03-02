@@ -166,7 +166,7 @@ public:
       return;
     }
 
-    auto component = std::make_shared<C>(C(std::forward<Args>(args)...));
+    auto component = std::make_shared<C>(std::forward<Args>(args)...);
 
     component->entity = e;
 
