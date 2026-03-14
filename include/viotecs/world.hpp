@@ -299,6 +299,14 @@ public:
       for_each(List{});
     };
   }
+
+  template <typename System> static void run_system(const System &system = System{})
+  {
+    using Dependencies = typename System::Dependencies;
+    std::vector<EntityId> matches =
+      query_components_tuple(Dependencies{});
+    system.run(matches);
+  }
   
 private:
   static SetPtr<EntityId> entities;
@@ -309,7 +317,7 @@ private:
   template <typename Tuple, std::size_t... Is>
   static void for_each_impl(Tuple &&tuple, std::index_sequence<Is...>)
   {
-    (..., process(std::get<Is>(std::forward<Tuple>(tuple))));
+    (..., run_system(std::get<Is>(std::forward<Tuple>(tuple))));
   }
   template <typename Tuple> static void for_each(Tuple &&tuple)
   {
@@ -321,13 +329,6 @@ private:
   static std::vector<EntityId> query_components_tuple(std::tuple<T...>)
   {
     return query_components<T...>();
-  }
-  template <typename System> static void process(const System &system)
-  {
-    using Dependencies = typename System::Dependencies;
-    std::vector<EntityId> matches =
-      query_components_tuple(Dependencies{});
-    system.run(matches);
   }
 
   template <typename C, typename... Components, typename N = None>
